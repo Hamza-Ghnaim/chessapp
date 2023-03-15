@@ -8,13 +8,7 @@ const Board = ()=>{
   const chessBox = useSelector((state)=>state.spaces);
   let squares = [];
 
-  // console.log(chessBox);
 
-  // chessBox.forEach((key,val) => {
-
-  //   console.log(key,val);
-    
-  // });
 
 
     // const squares = Array(64)
@@ -34,13 +28,22 @@ const Board = ()=>{
     //   );
     // });
 
-    chessBox.forEach((key,val)=>{
+
+    Object.keys(chessBox).forEach((key,index)=>{
+      const row = 8 - Math.floor(index / 8);
+      const col = (index % 8) + 1;
+      const color = (row + col) % 2 === 0 ? styles.black : styles.white; 
       squares.push(
-        <div>
-          {}
+        <div key = {key}
+        style={{"height" : "80px", "width" : "80px"}}
+          className={`${styles} ${color}`}
+        >
+          {chessBox[key] ?<img src={chessBox[key]} alt = "chesspiece" style={{"height" : "60px", "width" : "60px"}} /> : key}
         </div>
       )
     })
+
+
 
   return (
     <div className={styles.gridContainer}>
@@ -52,6 +55,9 @@ const Board = ()=>{
 };
 
 export default Board;
+
+
+
 
 
 
