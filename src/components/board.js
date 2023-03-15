@@ -6,12 +6,15 @@ import { useSelector } from "react-redux";
 const Board = ()=>{
 
   const chessBox = useSelector((state)=>state.spaces);
-  
-  chessBox.forEach((key,val) => {
+  let squares = [];
 
-    console.log(key,val);
+  // console.log(chessBox);
+
+  // chessBox.forEach((key,val) => {
+
+  //   console.log(key,val);
     
-  });
+  // });
 
 
     // const squares = Array(64)
@@ -30,14 +33,20 @@ const Board = ()=>{
     //     </div>
     //   );
     // });
+
+    chessBox.forEach((key,val)=>{
+      squares.push(
+        <div>
+          {}
+        </div>
+      )
+    })
+
   return (
     <div className={styles.gridContainer}>
-
-      {/* {squares.map((square, index) => (
+      {squares.map((square, index) => (
         <div key={index}>{square}</div>
-      ))} */}
-
-      
+      ))}
     </div>
   );
 };
