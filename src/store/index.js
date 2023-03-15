@@ -155,6 +155,8 @@ const reducer = (state = boxState, action) => {
   if (action.type === "show") {
     // console.log(state.spaces[63]);
     const slice = action.boxIndex;
+    const currentpiece = boxState.spaces[action.boxIndex];
+    console.log(currentpiece);
     // console.log(slice);
     return {
       spaces: state.spaces,

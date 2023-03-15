@@ -9,9 +9,9 @@ const Board = () => {
   const activepiece = useSelector((state) => state.activeCell);
   let squares = [];
 
-  useEffect(() => {
-    console.log(activepiece);
-  }, [activepiece]);
+  // useEffect(() => {
+  //   console.log(activepiece);
+  // }, [activepiece]);
 
   const showMoves = (idx) => {
     // console.log(idx);
