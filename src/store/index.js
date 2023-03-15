@@ -1,51 +1,84 @@
+import blackpawn1 from '../components/blackPieces/Peon.png';
+import blackpawn2 from '../components/blackPieces/Peon.png';
+import blackpawn3 from '../components/blackPieces/Peon.png';
+import blackpawn4 from '../components/blackPieces/Peon.png';
+import blackpawn5 from '../components/blackPieces/Peon.png';
+import blackpawn6 from '../components/blackPieces/Peon.png';
+import blackpawn7 from '../components/blackPieces/Peon.png';
+import blackpawn8 from '../components/blackPieces/Peon.png';
+import balckbishop1 from '../components/blackPieces/Tower.png';
+import balckbishop2 from '../components/blackPieces/Tower.png';
+import blackknight1 from '../components/blackPieces/Horse.png';
+import blackknight2 from '../components/blackPieces/Horse.png';
+import balckrook1 from '../components/blackPieces/Bishop.png';
+import balckrook2 from '../components/blackPieces/Bishop.png';
+import blackqueen from '../components/blackPieces/Lady.png';
+import blackking from '../components/blackPieces/King.png';
+import whitepawn1 from '../components/whitePieces/Peon.png';
+import whitepawn2 from '../components/whitePieces/Peon.png';
+import whitepawn3 from '../components/whitePieces/Peon.png';
+import whitepawn4 from '../components/whitePieces/Peon.png';
+import whitepawn5 from '../components/whitePieces/Peon.png';
+import whitepawn6 from '../components/whitePieces/Peon.png';
+import whitepawn7 from '../components/whitePieces/Peon.png';
+import whitepawn8 from '../components/whitePieces/Peon.png';
+import whitebishop1 from '../components/whitePieces/Tower.png';
+import whitebishop2 from '../components/whitePieces/Tower.png';
+import whiteknight1 from '../components/whitePieces/Horse.png';
+import whiteknight2 from '../components/whitePieces/Horse.png';
+import whiterook1 from '../components/whitePieces/Bishop.png';
+import whiterook2 from '../components/whitePieces/Bishop.png';
+import whitequeen from '../components/whitePieces/Lady.png';
+import whiteking from '../components/whitePieces/King.png';
+
 import { createStore } from "redux";
 
 let blackPieces = {
 
-    'pawn1':{},
-    'pawn2':{},
-    'pawn3':{},
-    'pawn4':{},
-    'pawn5':{},
-    'pawn6':{},
-    'pawn7':{},
-    'pawn8':{},
+    'pawn1':{"image":blackpawn1},
+    'pawn2':{"image":blackpawn2},
+    'pawn3':{"image":blackpawn3},
+    'pawn4':{"image":blackpawn4},
+    'pawn5':{"image":blackpawn5},
+    'pawn6':{"image":blackpawn6},
+    'pawn7':{"image":blackpawn7},
+    'pawn8':{"image":blackpawn8},
 
-    'bishop1':{},
-    'bishop2':{},
+    'bishop1':{"image":balckbishop1},
+    'bishop2':{"image":balckbishop2},
 
-    'knight1':{},
-    'knight2':{},
+    'knight1':{"image":blackknight1},
+    'knight2':{"image":blackknight2},
 
-    'rook1':{},
-    'rook2':{},
+    'rook1':{"image":balckrook1},
+    'rook2':{"image":balckrook2},
 
-    'queen':{},
-    'king':{},
+    'queen':{"image":blackqueen},
+    'king':{"image":blackking},
 }
 
 let whitePieces = {
 
-    'pawn1':{},
-    'pawn2':{},
-    'pawn3':{},
-    'pawn4':{},
-    'pawn5':{},
-    'pawn6':{},
-    'pawn7':{},
-    'pawn8':{},
+    'pawn1':{'image':whitepawn1},
+    'pawn2':{'image':whitepawn2},
+    'pawn3':{'image':whitepawn3},
+    'pawn4':{'image':whitepawn4},
+    'pawn5':{'image':whitepawn5},
+    'pawn6':{'image':whitepawn6},
+    'pawn7':{'image':whitepawn7},
+    'pawn8':{'image':whitepawn8},
 
-    'bishop1':{},
-    'bishop2':{},
+    'bishop1':{'image':whitebishop1},
+    'bishop2':{'image':whitebishop2},
 
-    'knight1':{},
-    'knight2':{},
+    'knight1':{'image':whiteknight1},
+    'knight2':{'image':whiteknight2},
 
-    'rook1':{},
-    'rook2':{},
+    'rook1':{'image':whiterook1},
+    'rook2':{'image':whiterook2},
 
-    'queen':{},
-    'king':{},
+    'queen':{'image':whitequeen},
+    'king':{'image':whiteking},
 }
 
 let boxState = {
