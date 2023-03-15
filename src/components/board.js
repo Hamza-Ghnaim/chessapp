@@ -1,17 +1,19 @@
 import React from "react";
 import styles from './board.module.css'
 
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 
 const Board = ()=>{
-
+  const dispatch = useDispatch();
   const chessBox = useSelector((state)=>state.spaces);
   let squares = [];
 
 
 
   const showMoves=(idx)=>{
-    console.log(idx);
+    // console.log(idx);
+    // console.log(sqre);
+    dispatch({type:'show',boxIndex :idx})
   }
     // const squares = Array(64)
     // .fill(0)
@@ -50,7 +52,7 @@ const Board = ()=>{
   return (
     <div className={styles.gridContainer}>
       {squares.map((square, index) => (
-        <div key={index} onClick={()=>showMoves(index)}>{square}</div>
+        <div key={index} onClick={()=>showMoves(index,square)}>{square}</div>
       ))}
     </div>
   );

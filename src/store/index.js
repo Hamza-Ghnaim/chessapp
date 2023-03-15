@@ -155,7 +155,15 @@ let boxState = {
 }
 
 const reducer = (state = boxState,action)=>{
-    
+
+    if (action.type==='show') {
+        return {
+            currentPiece: state.currentPiece,
+            playerTurn: state.playerTurn,
+            activeCell: state.currentPiece = action.boxIndex
+        }
+    }
+
     return state;
 }
 
