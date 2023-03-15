@@ -10,7 +10,9 @@ const Board = ()=>{
 
 
 
-
+  const showMoves=(idx)=>{
+    console.log(idx);
+  }
     // const squares = Array(64)
     // .fill(0)
     // .map((_, index) => {
@@ -48,7 +50,7 @@ const Board = ()=>{
   return (
     <div className={styles.gridContainer}>
       {squares.map((square, index) => (
-        <div key={index}>{square}</div>
+        <div key={index} onClick={()=>showMoves(index)}>{square}</div>
       ))}
     </div>
   );
