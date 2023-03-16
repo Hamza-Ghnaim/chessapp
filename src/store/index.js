@@ -158,6 +158,7 @@ const reducer = (state = boxState, action) => {
     const currentpieceIndex = action.boxIndex;
     const currentpieceName = state.spaces[action.boxIndex].name;
     const currentpiecePiece = state.spaces[action.boxIndex].piece;
+    const ValidBoxes = [];
     
     // console.log(currentpieceName);
     // console.log(currentpiecePiece);
@@ -170,8 +171,10 @@ const reducer = (state = boxState, action) => {
 
     switch (currentpieceName) {
 
-      case 'blackpawn1':
-        console.log(currentpieceName);
+      case 'blackpawn1': 
+        if ((state.spaces[currentpieceIndex+8].name)===undefined) {
+          console.log(currentpieceIndex);
+        }
         break;
 
       case 'blackpawn2':
