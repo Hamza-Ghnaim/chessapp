@@ -1,3 +1,4 @@
+import possibleBox from '../components/icon/green-circle-round-3d-button-1-cover.jpg';
 import blackpawn1 from "../components/blackPieces/Peon.png";
 import blackpawn2 from "../components/blackPieces/Peon.png";
 import blackpawn3 from "../components/blackPieces/Peon.png";
@@ -37,6 +38,7 @@ const leftedges =[0,8,16,24,32,40,48,56];
 const rightedges = [7,15,23,31,39,47,55,63];
 
 let blackPieces = {
+  validmove:{piece:possibleBox},
   pawn1: {piece:blackpawn1,name:'blackpawn1'},
   pawn2: {piece:blackpawn2,name:'blackpawn2'},
   pawn3: {piece:blackpawn3,name:'blackpawn3'},
@@ -179,7 +181,7 @@ const reducer = (state = boxState, action) => {
       if (leftedges.includes(currentpieceIndex)) {
         if ((state.spaces[currentpieceIndex+8].name)===undefined) {
           ValidBoxes.push(currentpieceIndex+8)
-          boxState.spaces[currentpieceIndex+8]="validMove";
+          boxState.spaces[currentpieceIndex+8]=blackPieces.validmove;
           console.log(boxState.spaces[currentpieceIndex+8]);
         }
         if ((state.spaces[currentpieceIndex+9].name)!==undefined) {
