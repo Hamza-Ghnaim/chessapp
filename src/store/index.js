@@ -33,6 +33,9 @@ import whiteking from "../components/whitePieces/King.png";
 
 import { legacy_createStore } from "redux";
 
+const leftedges =[0,8,16,24,32,40,48,56];
+const rightedges = [7,15,23,31,39,47,55,63];
+
 let blackPieces = {
   pawn1: {piece:blackpawn1,name:'blackpawn1'},
   pawn2: {piece:blackpawn2,name:'blackpawn2'},
@@ -172,9 +175,19 @@ const reducer = (state = boxState, action) => {
     switch (currentpieceName) {
 
       case 'blackpawn1': 
+      
+      if (leftedges.includes(currentpieceIndex)) {
         if ((state.spaces[currentpieceIndex+8].name)===undefined) {
-          console.log(currentpieceIndex);
+          ValidBoxes.push(currentpieceIndex+8)
+          boxState.spaces[currentpieceIndex+8]="validMove";
+          console.log(boxState.spaces[currentpieceIndex+8]);
         }
+        if ((state.spaces[currentpieceIndex+9].name)!==undefined) {
+          ValidBoxes.push(currentpieceIndex+9);
+        }
+      }
+
+      console.log(ValidBoxes);
         break;
 
       case 'blackpawn2':
