@@ -14,7 +14,7 @@ const Board = () => {
   // }, [activepiece]);
 
   const showMoves = (idx) => {
-    // console.log(idx);
+    console.log(idx);
     // console.log(sqre);
     dispatch({ type: "show", boxIndex: idx });
   };
@@ -45,9 +45,9 @@ const Board = () => {
         style={{ height: "80px", width: "80px" }}
         className={`${styles} ${color}`}
       >
-        {chessBox[key] ? (
+        {chessBox[key].piece ? (
           <img
-            src={chessBox[key]}
+            src={chessBox[key].piece}
             alt="chesspiece"
             style={{ height: "60px", width: "60px" }}
           />

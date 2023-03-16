@@ -10,8 +10,8 @@ import balckbishop1 from "../components/blackPieces/Tower.png";
 import balckbishop2 from "../components/blackPieces/Tower.png";
 import blackknight1 from "../components/blackPieces/Horse.png";
 import blackknight2 from "../components/blackPieces/Horse.png";
-import balckrook1 from "../components/blackPieces/Bishop.png";
-import balckrook2 from "../components/blackPieces/Bishop.png";
+import blackrook1 from "../components/blackPieces/Bishop.png";
+import blackrook2 from "../components/blackPieces/Bishop.png";
 import blackqueen from "../components/blackPieces/Lady.png";
 import blackking from "../components/blackPieces/King.png";
 import whitepawn1 from "../components/whitePieces/Peon.png";
@@ -34,49 +34,49 @@ import whiteking from "../components/whitePieces/King.png";
 import { legacy_createStore } from "redux";
 
 let blackPieces = {
-  pawn1: blackpawn1,
-  pawn2: blackpawn2,
-  pawn3: blackpawn3,
-  pawn4: blackpawn4,
-  pawn5: blackpawn5,
-  pawn6: blackpawn6,
-  pawn7: blackpawn7,
-  pawn8: blackpawn8,
+  pawn1: {piece:blackpawn1,name:'pawn1'},
+  pawn2: {piece:blackpawn2,name:'pawn2'},
+  pawn3: {piece:blackpawn3,name:'pawn3'},
+  pawn4: {piece:blackpawn4,name:'pawn4'},
+  pawn5: {piece:blackpawn5,name:'pawn5'},
+  pawn6: {piece:blackpawn6,name:'pawn6'},
+  pawn7: {piece:blackpawn7,name:'pawn7'},
+  pawn8: {piece:blackpawn8,name:'pawn8'},
 
-  bishop1: balckbishop1,
-  bishop2: balckbishop2,
+  bishop1: {piece:balckbishop1,name:'bishop1'},
+  bishop2: {piece:balckbishop2,name:'bishop2'},
 
-  knight1: blackknight1,
-  knight2: blackknight2,
+  knight1: {piece:blackknight1,name:'knight1'},
+  knight2: {piece:blackknight2,name:'knight2'},
 
-  rook1: balckrook1,
-  rook2: balckrook2,
+  rook1: {piece:blackrook1,name:'rook1'},
+  rook2: {piece:blackrook2,name:'rook2'},
 
-  queen: blackqueen,
-  king: blackking,
+  queen: {piece:blackqueen,name:'queen'},
+  king: {piece:blackking,name:'king'},
 };
 
 let whitePieces = {
-  pawn1: whitepawn1,
-  pawn2: whitepawn2,
-  pawn3: whitepawn3,
-  pawn4: whitepawn4,
-  pawn5: whitepawn5,
-  pawn6: whitepawn6,
-  pawn7: whitepawn7,
-  pawn8: whitepawn8,
+  pawn1: {piece:whitepawn1,name:'pawn1'},
+  pawn2: {piece:whitepawn2,name:'pawn2'},
+  pawn3: {piece:whitepawn3,name:'pawn3'},
+  pawn4: {piece:whitepawn4,name:'pawn4'},
+  pawn5: {piece:whitepawn5,name:'pawn5'},
+  pawn6: {piece:whitepawn6,name:'pawn6'},
+  pawn7: {piece:whitepawn7,name:'pawn7'},
+  pawn8: {piece:whitepawn8,name:'pawn8'},
 
-  bishop1: whitebishop1,
-  bishop2: whitebishop2,
+  bishop1: {piece:whitebishop1,name:'bishop1'},
+  bishop2: {piece:whitebishop2,name:'bishop2'},
 
-  knight1: whiteknight1,
-  knight2: whiteknight2,
+  knight1: {piece:whiteknight1,name:'knight1'},
+  knight2: {piece:whiteknight2,name:'knight2'},
 
-  rook1: whiterook1,
-  rook2: whiterook2,
+  rook1: {piece:whiterook1,name:'rook1'},
+  rook2: {piece:whiterook2,name:'rook2'},
 
-  queen: whitequeen,
-  king: whiteking,
+  queen: {piece:whitequeen,name:'queen'},
+  king: {piece:whiteking,name:'king'},
 };
 
 let boxState = {
@@ -152,12 +152,19 @@ let boxState = {
 };
 
 const reducer = (state = boxState, action) => {
+
   if (action.type === "show") {
-    // console.log(state.spaces[63]);
+
     const slice = action.boxIndex;
-    const currentpiece = boxState.spaces[action.boxIndex];
+    const currentpiece = state.spaces[action.boxIndex].name
+    ;
     console.log(currentpiece);
+    // console.log(currentpiece.name)
     // console.log(slice);
+    // if(currentpiece==='bishop1'){
+    //   console.log("caffo");
+    // }
+
     return {
       spaces: state.spaces,
       currentPiece: state.currentPiece,
