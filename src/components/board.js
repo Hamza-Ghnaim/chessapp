@@ -14,7 +14,7 @@ const Board = () => {
   // }, [activepiece]);
 
   const showMoves = (idx) => {
-    console.log(idx);
+    // console.log(idx);
     // console.log(sqre);
     dispatch({ type: "show", boxIndex: idx });
   };

@@ -34,49 +34,49 @@ import whiteking from "../components/whitePieces/King.png";
 import { legacy_createStore } from "redux";
 
 let blackPieces = {
-  pawn1: {piece:blackpawn1,name:'pawn1'},
-  pawn2: {piece:blackpawn2,name:'pawn2'},
-  pawn3: {piece:blackpawn3,name:'pawn3'},
-  pawn4: {piece:blackpawn4,name:'pawn4'},
-  pawn5: {piece:blackpawn5,name:'pawn5'},
-  pawn6: {piece:blackpawn6,name:'pawn6'},
-  pawn7: {piece:blackpawn7,name:'pawn7'},
-  pawn8: {piece:blackpawn8,name:'pawn8'},
+  pawn1: {piece:blackpawn1,name:'blackpawn1'},
+  pawn2: {piece:blackpawn2,name:'blackpawn2'},
+  pawn3: {piece:blackpawn3,name:'blackpawn3'},
+  pawn4: {piece:blackpawn4,name:'blackpawn4'},
+  pawn5: {piece:blackpawn5,name:'blackpawn5'},
+  pawn6: {piece:blackpawn6,name:'blackpawn6'},
+  pawn7: {piece:blackpawn7,name:'blackpawn7'},
+  pawn8: {piece:blackpawn8,name:'blackpawn8'},
 
-  bishop1: {piece:balckbishop1,name:'bishop1'},
-  bishop2: {piece:balckbishop2,name:'bishop2'},
+  bishop1: {piece:balckbishop1,name:'blackbishop1'},
+  bishop2: {piece:balckbishop2,name:'blackbishop2'},
 
-  knight1: {piece:blackknight1,name:'knight1'},
-  knight2: {piece:blackknight2,name:'knight2'},
+  knight1: {piece:blackknight1,name:'blackknight1'},
+  knight2: {piece:blackknight2,name:'blackknight2'},
 
-  rook1: {piece:blackrook1,name:'rook1'},
-  rook2: {piece:blackrook2,name:'rook2'},
+  rook1: {piece:blackrook1,name:'blackrook1'},
+  rook2: {piece:blackrook2,name:'blackrook2'},
 
-  queen: {piece:blackqueen,name:'queen'},
-  king: {piece:blackking,name:'king'},
+  queen: {piece:blackqueen,name:'blackqueen'},
+  king: {piece:blackking,name:'blackking'},
 };
 
 let whitePieces = {
-  pawn1: {piece:whitepawn1,name:'pawn1'},
-  pawn2: {piece:whitepawn2,name:'pawn2'},
-  pawn3: {piece:whitepawn3,name:'pawn3'},
-  pawn4: {piece:whitepawn4,name:'pawn4'},
-  pawn5: {piece:whitepawn5,name:'pawn5'},
-  pawn6: {piece:whitepawn6,name:'pawn6'},
-  pawn7: {piece:whitepawn7,name:'pawn7'},
-  pawn8: {piece:whitepawn8,name:'pawn8'},
+  pawn1: {piece:whitepawn1,name:'whitepawn1'},
+  pawn2: {piece:whitepawn2,name:'whitepawn2'},
+  pawn3: {piece:whitepawn3,name:'whitepawn3'},
+  pawn4: {piece:whitepawn4,name:'whitepawn4'},
+  pawn5: {piece:whitepawn5,name:'whitepawn5'},
+  pawn6: {piece:whitepawn6,name:'whitepawn6'},
+  pawn7: {piece:whitepawn7,name:'whitepawn7'},
+  pawn8: {piece:whitepawn8,name:'whitepawn8'},
 
-  bishop1: {piece:whitebishop1,name:'bishop1'},
-  bishop2: {piece:whitebishop2,name:'bishop2'},
+  bishop1: {piece:whitebishop1,name:'whitebishop1'},
+  bishop2: {piece:whitebishop2,name:'whitebishop2'},
 
-  knight1: {piece:whiteknight1,name:'knight1'},
-  knight2: {piece:whiteknight2,name:'knight2'},
+  knight1: {piece:whiteknight1,name:'whiteknight1'},
+  knight2: {piece:whiteknight2,name:'whiteknight2'},
 
-  rook1: {piece:whiterook1,name:'rook1'},
-  rook2: {piece:whiterook2,name:'rook2'},
+  rook1: {piece:whiterook1,name:'whiterook1'},
+  rook2: {piece:whiterook2,name:'whiterook2'},
 
-  queen: {piece:whitequeen,name:'queen'},
-  king: {piece:whiteking,name:'king'},
+  queen: {piece:whitequeen,name:'whitequeen'},
+  king: {piece:whiteking,name:'whiteking'},
 };
 
 let boxState = {
@@ -155,15 +155,88 @@ const reducer = (state = boxState, action) => {
 
   if (action.type === "show") {
 
-    const slice = action.boxIndex;
-    const currentpiece = state.spaces[action.boxIndex].name
-    ;
-    console.log(currentpiece);
-    // console.log(currentpiece.name)
-    // console.log(slice);
-    // if(currentpiece==='bishop1'){
-    //   console.log("caffo");
+    const currentpieceIndex = action.boxIndex;
+    const currentpieceName = state.spaces[action.boxIndex].name;
+    const currentpiecePiece = state.spaces[action.boxIndex].piece;
+    
+    // console.log(currentpieceName);
+    // console.log(currentpiecePiece);
+    // console.log(currentpieceIndex)
+
+    // if (currentpieceName==='blackpawn1') {
+    //   console.log(currentpiecePiece);
+      
     // }
+
+    switch (currentpieceName) {
+
+      case 'blackpawn1':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackpawn2':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackpawn3':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackpawn4':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackpawn5':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackpawn6':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackpawn7':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackpawn8':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackbishop1':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackbishop2':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackknight1':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackknight2':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackrook1':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackrook2':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackqueen':
+        console.log(currentpieceName);
+        break;
+
+      case 'blackking':
+        console.log(currentpieceName);
+        break;
+
+        default:
+        break;
+    }
 
     return {
       spaces: state.spaces,
