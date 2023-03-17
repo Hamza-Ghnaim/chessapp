@@ -115,7 +115,7 @@ let boxState = {
     26: "",
     27: "",
     28: "",
-    29: blackPieces.validmove,
+    29: "",
     30: "",
     31: "",
     32: "",
@@ -157,7 +157,7 @@ let boxState = {
 };
 
 const reducer = (state = boxState, action) => {
-  if (action.type === "show") {
+  if (action.type === "showValid") {
     const currentpieceIndex = action.boxIndex;
     const currentpieceName = state.spaces[action.boxIndex].name;
     const currentpiecePiece = state.spaces[action.boxIndex].piece;
@@ -187,7 +187,7 @@ const reducer = (state = boxState, action) => {
           }
         }
 
-        console.log(ValidBoxes);
+        console.log(currentpieceName);
         break;
 
       case "blackpawn2":
@@ -253,6 +253,25 @@ const reducer = (state = boxState, action) => {
       default:
         break;
     }
+
+    return {
+      spaces: state.spaces,
+      currentPiece: state.currentPiece,
+      playerTurn: state.playerTurn,
+      activeCell: (state.activeCell = action.boxIndex),
+    };
+  }
+
+  if (action.type === "movePiece") {
+    const currentpieceIndex = action.position;
+    // if()
+    console.log(state.spaces[currentpieceIndex]);
+    state.spaces[currentpieceIndex].piece =
+      state.spaces[state.activeCell].piece;
+    // console.log(state.spaces);
+
+    // console.log(state.spaces[currentpieceIndex].piece);
+    // console.log(currentpieceIndex);
 
     return {
       spaces: state.spaces,

@@ -9,33 +9,14 @@ const Board = () => {
   const activepiece = useSelector((state) => state.activeCell);
   let squares = [];
 
-  // useEffect(() => {
-  //   console.log(activepiece);
-  // }, [activepiece]);
-  const logger = () => {
-    console.log("this is a valid move space");
-  };
-  const showMoves = (idx) => {
+  const movePiece = (idx) => {
     // console.log(idx);
-    // console.log(sqre);
-    dispatch({ type: "show", boxIndex: idx });
+    dispatch({ type: "movePiece", position: idx });
   };
-  // const squares = Array(64)
-  // .fill(0)
-  // .map((_, index) => {
-  //   const row = 8 - Math.floor(index / 8);
-  //   const col = (index % 8) + 1;
-  //   const color = (row + col) % 2 === 0 ? styles.black : styles.white;
-  //   return (
-  //     <div
-  //       key={index}
-  //       className={`${styles.square} ${color}`}
-  //     >
-  //       {col}
-  //       {row}
-  //     </div>
-  //   );
-  // });
+
+  const showMoves = (idx) => {
+    dispatch({ type: "showValid", boxIndex: idx });
+  };
 
   Object.keys(chessBox).forEach((key, index) => {
     const row = 8 - Math.floor(index / 8);
@@ -48,7 +29,7 @@ const Board = () => {
             key={key}
             style={{ height: "80px", width: "80px" }}
             className={`${styles} ${color}`}
-            onClick={() => logger()}
+            onClick={() => movePiece(index)}
           >
             {chessBox[key].piece ? (
               <img
