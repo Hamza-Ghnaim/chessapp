@@ -12,7 +12,9 @@ const Board = () => {
   // useEffect(() => {
   //   console.log(activepiece);
   // }, [activepiece]);
-
+  const logger = () => {
+    console.log("this is a valid move space");
+  };
   const showMoves = (idx) => {
     // console.log(idx);
     // console.log(sqre);
@@ -39,31 +41,50 @@ const Board = () => {
     const row = 8 - Math.floor(index / 8);
     const col = (index % 8) + 1;
     const color = (row + col) % 2 === 0 ? styles.black : styles.white;
-    squares.push(
-      <div
-        key={key}
-        style={{ height: "80px", width: "80px" }}
-        className={`${styles} ${color}`}
-      >
-        {chessBox[key].piece ? (
-          <img
-            src={chessBox[key].piece}
-            alt="chesspiece"
-            style={{ height: "60px", width: "60px" }}
-          />
-        ) : (
-          key
-        )}
-      </div>
-    );
+
+    chessBox[key].name === "validmove"
+      ? squares.push(
+          <div
+            key={key}
+            style={{ height: "80px", width: "80px" }}
+            className={`${styles} ${color}`}
+            onClick={() => logger()}
+          >
+            {chessBox[key].piece ? (
+              <img
+                src={chessBox[key].piece}
+                alt="chesspiece"
+                style={{ height: "60px", width: "60px" }}
+              />
+            ) : (
+              key
+            )}
+          </div>
+        )
+      : squares.push(
+          <div
+            key={key}
+            style={{ height: "80px", width: "80px" }}
+            className={`${styles} ${color}`}
+            onClick={() => showMoves(index)}
+          >
+            {chessBox[key].piece ? (
+              <img
+                src={chessBox[key].piece}
+                alt="chesspiece"
+                style={{ height: "60px", width: "60px" }}
+              />
+            ) : (
+              key
+            )}
+          </div>
+        );
   });
 
   return (
     <div className={styles.gridContainer}>
       {squares.map((square, index) => (
-        <div key={index} onClick={() => showMoves(index, square)}>
-          {square}
-        </div>
+        <div key={index}>{square}</div>
       ))}
     </div>
   );

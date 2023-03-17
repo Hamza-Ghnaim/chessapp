@@ -1,4 +1,4 @@
-import possibleBox from '../components/icon/green-circle-round-3d-button-1-cover.jpg';
+import possibleBox from "../components/icon/green-circle-round-3d-button-1-cover.jpg";
 import blackpawn1 from "../components/blackPieces/Peon.png";
 import blackpawn2 from "../components/blackPieces/Peon.png";
 import blackpawn3 from "../components/blackPieces/Peon.png";
@@ -34,54 +34,54 @@ import whiteking from "../components/whitePieces/King.png";
 
 import { legacy_createStore } from "redux";
 
-const leftedges =[0,8,16,24,32,40,48,56];
-const rightedges = [7,15,23,31,39,47,55,63];
+const leftedges = [0, 8, 16, 24, 32, 40, 48, 56];
+const rightedges = [7, 15, 23, 31, 39, 47, 55, 63];
 
 let blackPieces = {
-  validmove:{piece:possibleBox},
-  pawn1: {piece:blackpawn1,name:'blackpawn1'},
-  pawn2: {piece:blackpawn2,name:'blackpawn2'},
-  pawn3: {piece:blackpawn3,name:'blackpawn3'},
-  pawn4: {piece:blackpawn4,name:'blackpawn4'},
-  pawn5: {piece:blackpawn5,name:'blackpawn5'},
-  pawn6: {piece:blackpawn6,name:'blackpawn6'},
-  pawn7: {piece:blackpawn7,name:'blackpawn7'},
-  pawn8: {piece:blackpawn8,name:'blackpawn8'},
+  validmove: { piece: possibleBox, name: "validmove" },
+  pawn1: { piece: blackpawn1, name: "blackpawn1" },
+  pawn2: { piece: blackpawn2, name: "blackpawn2" },
+  pawn3: { piece: blackpawn3, name: "blackpawn3" },
+  pawn4: { piece: blackpawn4, name: "blackpawn4" },
+  pawn5: { piece: blackpawn5, name: "blackpawn5" },
+  pawn6: { piece: blackpawn6, name: "blackpawn6" },
+  pawn7: { piece: blackpawn7, name: "blackpawn7" },
+  pawn8: { piece: blackpawn8, name: "blackpawn8" },
 
-  bishop1: {piece:balckbishop1,name:'blackbishop1'},
-  bishop2: {piece:balckbishop2,name:'blackbishop2'},
+  bishop1: { piece: balckbishop1, name: "blackbishop1" },
+  bishop2: { piece: balckbishop2, name: "blackbishop2" },
 
-  knight1: {piece:blackknight1,name:'blackknight1'},
-  knight2: {piece:blackknight2,name:'blackknight2'},
+  knight1: { piece: blackknight1, name: "blackknight1" },
+  knight2: { piece: blackknight2, name: "blackknight2" },
 
-  rook1: {piece:blackrook1,name:'blackrook1'},
-  rook2: {piece:blackrook2,name:'blackrook2'},
+  rook1: { piece: blackrook1, name: "blackrook1" },
+  rook2: { piece: blackrook2, name: "blackrook2" },
 
-  queen: {piece:blackqueen,name:'blackqueen'},
-  king: {piece:blackking,name:'blackking'},
+  queen: { piece: blackqueen, name: "blackqueen" },
+  king: { piece: blackking, name: "blackking" },
 };
 
 let whitePieces = {
-  pawn1: {piece:whitepawn1,name:'whitepawn1'},
-  pawn2: {piece:whitepawn2,name:'whitepawn2'},
-  pawn3: {piece:whitepawn3,name:'whitepawn3'},
-  pawn4: {piece:whitepawn4,name:'whitepawn4'},
-  pawn5: {piece:whitepawn5,name:'whitepawn5'},
-  pawn6: {piece:whitepawn6,name:'whitepawn6'},
-  pawn7: {piece:whitepawn7,name:'whitepawn7'},
-  pawn8: {piece:whitepawn8,name:'whitepawn8'},
+  pawn1: { piece: whitepawn1, name: "whitepawn1" },
+  pawn2: { piece: whitepawn2, name: "whitepawn2" },
+  pawn3: { piece: whitepawn3, name: "whitepawn3" },
+  pawn4: { piece: whitepawn4, name: "whitepawn4" },
+  pawn5: { piece: whitepawn5, name: "whitepawn5" },
+  pawn6: { piece: whitepawn6, name: "whitepawn6" },
+  pawn7: { piece: whitepawn7, name: "whitepawn7" },
+  pawn8: { piece: whitepawn8, name: "whitepawn8" },
 
-  bishop1: {piece:whitebishop1,name:'whitebishop1'},
-  bishop2: {piece:whitebishop2,name:'whitebishop2'},
+  bishop1: { piece: whitebishop1, name: "whitebishop1" },
+  bishop2: { piece: whitebishop2, name: "whitebishop2" },
 
-  knight1: {piece:whiteknight1,name:'whiteknight1'},
-  knight2: {piece:whiteknight2,name:'whiteknight2'},
+  knight1: { piece: whiteknight1, name: "whiteknight1" },
+  knight2: { piece: whiteknight2, name: "whiteknight2" },
 
-  rook1: {piece:whiterook1,name:'whiterook1'},
-  rook2: {piece:whiterook2,name:'whiterook2'},
+  rook1: { piece: whiterook1, name: "whiterook1" },
+  rook2: { piece: whiterook2, name: "whiterook2" },
 
-  queen: {piece:whitequeen,name:'whitequeen'},
-  king: {piece:whiteking,name:'whiteking'},
+  queen: { piece: whitequeen, name: "whitequeen" },
+  king: { piece: whiteking, name: "whiteking" },
 };
 
 let boxState = {
@@ -115,7 +115,7 @@ let boxState = {
     26: "",
     27: "",
     28: "",
-    29: "",
+    29: blackPieces.validmove,
     30: "",
     31: "",
     32: "",
@@ -157,102 +157,100 @@ let boxState = {
 };
 
 const reducer = (state = boxState, action) => {
-
   if (action.type === "show") {
-
     const currentpieceIndex = action.boxIndex;
     const currentpieceName = state.spaces[action.boxIndex].name;
     const currentpiecePiece = state.spaces[action.boxIndex].piece;
     const ValidBoxes = [];
-    
+
     // console.log(currentpieceName);
     // console.log(currentpiecePiece);
     // console.log(currentpieceIndex)
 
     // if (currentpieceName==='blackpawn1') {
     //   console.log(currentpiecePiece);
-      
+
     // }
 
     switch (currentpieceName) {
-
-      case 'blackpawn1': 
-      
-      if (leftedges.includes(currentpieceIndex)) {
-        if ((state.spaces[currentpieceIndex+8].name)===undefined) {
-          ValidBoxes.push(currentpieceIndex+8)
-          boxState.spaces[currentpieceIndex+8]=blackPieces.validmove;
-          console.log(boxState.spaces[currentpieceIndex+8]);
+      case "blackpawn1":
+        if (leftedges.includes(currentpieceIndex)) {
+          if (state.spaces[currentpieceIndex + 8].name === undefined) {
+            ValidBoxes.push(currentpieceIndex + 8);
+            boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+            // console.log(boxState.spaces[currentpieceIndex + 8]);
+          }
+          if (state.spaces[currentpieceIndex + 9].name === undefined) {
+            ValidBoxes.push(currentpieceIndex + 9);
+            boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+            // console.log(boxState.spaces[currentpieceIndex + 9]);
+          }
         }
-        if ((state.spaces[currentpieceIndex+9].name)!==undefined) {
-          ValidBoxes.push(currentpieceIndex+9);
-        }
-      }
 
-      console.log(ValidBoxes);
+        console.log(ValidBoxes);
         break;
 
-      case 'blackpawn2':
+      case "blackpawn2":
         console.log(currentpieceName);
         break;
 
-      case 'blackpawn3':
+      case "blackpawn3":
         console.log(currentpieceName);
         break;
 
-      case 'blackpawn4':
+      case "blackpawn4":
         console.log(currentpieceName);
         break;
 
-      case 'blackpawn5':
+      case "blackpawn5":
         console.log(currentpieceName);
         break;
 
-      case 'blackpawn6':
+      case "blackpawn6":
         console.log(currentpieceName);
         break;
 
-      case 'blackpawn7':
+      case "blackpawn7":
         console.log(currentpieceName);
         break;
 
-      case 'blackpawn8':
+      case "blackpawn8":
         console.log(currentpieceName);
         break;
 
-      case 'blackbishop1':
+      case "blackbishop1":
         console.log(currentpieceName);
         break;
 
-      case 'blackbishop2':
+      case "blackbishop2":
         console.log(currentpieceName);
         break;
 
-      case 'blackknight1':
+      case "blackknight1":
         console.log(currentpieceName);
         break;
 
-      case 'blackknight2':
+      case "blackknight2":
         console.log(currentpieceName);
         break;
 
-      case 'blackrook1':
+      case "blackrook1":
         console.log(currentpieceName);
         break;
 
-      case 'blackrook2':
+      case "blackrook2":
         console.log(currentpieceName);
         break;
 
-      case 'blackqueen':
+      case "blackqueen":
         console.log(currentpieceName);
         break;
 
-      case 'blackking':
+      case "blackking":
         console.log(currentpieceName);
         break;
 
-        default:
+      default:
         break;
     }
 
