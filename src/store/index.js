@@ -260,8 +260,9 @@
       console.log(state.spaces[action.position].name);
       
       // state.spaces[action.position].name = state.spaces[state.activeCell].name;
-      state.spaces[action.position].piece = state.spaces[state.activeCell].piece;
-      console.log(state.activeCell);
+      state.spaces[action.position] = state.spaces[state.activeCell];
+      state.spaces[state.activeCell]=  "";
+      // console.log(state.activeCell);
       
     }
     return {
