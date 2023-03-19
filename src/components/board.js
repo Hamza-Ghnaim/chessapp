@@ -10,14 +10,12 @@ const Board = () => {
   let squares = [];
 
   const movePiece = (idx) => {
-    console.log("Second");
-    console.log(idx);
+    // console.log(idx);
     dispatch({ type: "movePiece", position: idx });
   };
 
   const showMoves = (idx) => {
-    console.log("First");
-    console.log(idx);
+    // console.log(idx);
     dispatch({ type: "showValid", boxIndex: idx });
   };
 

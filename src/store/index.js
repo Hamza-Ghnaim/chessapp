@@ -161,17 +161,7 @@
       const currentpieceIndex = action.boxIndex;
       const currentpieceName = state.spaces[action.boxIndex].name;
 
-      // const currentpiecePiece = state.spaces[action.boxIndex].piece;
-      // const ValidBoxes = [];
 
-      // console.log(currentpieceName);
-      // console.log(currentpiecePiece);
-      // console.log(currentpieceIndex)
-
-      // if (currentpieceName==='blackpawn1') {
-      //   console.log(currentpiecePiece);
-
-      // }
 
       switch (currentpieceName) {
         case "blackpawn1":
@@ -265,67 +255,21 @@
 
 
     if (action.type === "movePiece") {
-// console.log(state.spaces[state.activeCell].piece);
 
-      // console.log(action.position);
-      console.log(action.position);
+      console.log(state.spaces[action.position].piece);
+      console.log(state.spaces[action.position].name);
+      
+      // state.spaces[action.position].name = state.spaces[state.activeCell].name;
+      state.spaces[action.position].piece = state.spaces[state.activeCell].piece;
       console.log(state.activeCell);
-      [state.spaces[state.activeCell].piece , state.spaces[action.position].piece] = [state.spaces[action.position].piece, state.spaces[state.activeCell].piece]
-      // state.spaces[action.position].piece = state.spaces[state.activeCell].piece;
-      // if (action.position === state.activeCell) {
-      //   state.spaces[action.position].piece = state.spaces[state.activeCell].piece;
-      // } else {
-      //   state.spaces[action.position].piece = state.spaces[state.activeCell].piece;
-      //   state.spaces[state.activeCell].piece = "";
-      // }
-      return {
-        spaces: state.spaces,
-        currentPiece: state.currentPiece,
-        playerTurn: state.playerTurn,
-        activeCell: action.position,
-      };
+      
     }
-    // if (action.type === "movePiece") {
-    //   // console.log(state.spaces);
-
-    //   // console.log(currentpieceIndex);
-
-    //   // console.log(state.spaces[currentpieceIndex]);
-
-
-    //   state.spaces[action.position].piece =
-    //   state.spaces[state.activeCell].piece;
-
-    //   // console.log(state.spaces);
-    //   // console.log(state.spaces);
-
-    //   // state.spaces = Object.entries(state.spaces).reduce((acc, [key, value]) => {
-    //   //   acc[key] = value === blackPieces.validmove ? "" : value;
-    //   //   return acc;
-    //   // }, {});
-
-
-    //   // if()
-    //   // console.log(action.position);
-
-    //   // console.log(state.spaces[currentpieceIndex]);
-
-
-
-    //   // state.spaces[state.activeCell] = "";
-
-    //   // console.log(state.spaces);
-
-    //   // console.log(state.spaces[currentpieceIndex].piece);
-    //   // console.log(currentpieceIndex);
-
-    //   return {
-    //     spaces: state.spaces,
-    //     currentPiece: state.currentPiece,
-    //     playerTurn: state.playerTurn,
-    //     activeCell: (state.activeCell = action.position),
-    //   };
-    // }
+    return {
+      spaces: state.spaces,
+      currentPiece: state.currentPiece,
+      playerTurn: state.playerTurn,
+      activeCell: (state.activeCell = action.boxIndex),
+    };
 
     return state;
   };
