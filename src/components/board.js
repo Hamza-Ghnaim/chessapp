@@ -10,11 +10,14 @@ const Board = () => {
   let squares = [];
 
   const movePiece = (idx) => {
-    // console.log(idx);
+    console.log("Second");
+    console.log(idx);
     dispatch({ type: "movePiece", position: idx });
   };
 
   const showMoves = (idx) => {
+    console.log("First");
+    console.log(idx);
     dispatch({ type: "showValid", boxIndex: idx });
   };
 
@@ -26,7 +29,7 @@ const Board = () => {
     chessBox[key].name === "validmove"
       ? squares.push(
           <div
-            key={key}
+            key={index}
             style={{ height: "80px", width: "80px" }}
             className={`${styles} ${color}`}
             onClick={() => movePiece(index)}
@@ -44,7 +47,7 @@ const Board = () => {
         )
       : squares.push(
           <div
-            key={key}
+            key={index}
             style={{ height: "80px", width: "80px" }}
             className={`${styles} ${color}`}
             onClick={() => showMoves(index)}
