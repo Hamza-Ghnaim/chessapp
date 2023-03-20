@@ -167,12 +167,44 @@
       switch (currentpieceName) {
         case "blackpawn1":
           if (leftedges.includes(currentpieceIndex)) {
+
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
-            if (state.spaces[currentpieceIndex + 9].name === undefined) {
+            if (state.spaces[currentpieceIndex + 9].name !== undefined) {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+
+          if (rightedges.includes(currentpieceIndex)) {
+            
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].name !== undefined) {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+          if(!(rightedges.includes(currentpieceIndex))&&!(leftedges.includes(currentpieceIndex))){
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].name !== undefined) {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+            if (state.spaces[currentpieceIndex + 9].name !== undefined) {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 9]);
@@ -264,9 +296,7 @@
           state.spaces[idx] = ""
         }
       });
-      ValidBoxes = [];
-      // console.log(state.activeCell);
-      
+      ValidBoxes = [];      
     }
     return {
       spaces: state.spaces,
