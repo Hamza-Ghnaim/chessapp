@@ -62,26 +62,26 @@
   };
 
   let whitePieces = {
-    pawn1: { piece: whitepawn1, name: "whitepawn1" },
-    pawn2: { piece: whitepawn2, name: "whitepawn2" },
-    pawn3: { piece: whitepawn3, name: "whitepawn3" },
-    pawn4: { piece: whitepawn4, name: "whitepawn4" },
-    pawn5: { piece: whitepawn5, name: "whitepawn5" },
-    pawn6: { piece: whitepawn6, name: "whitepawn6" },
-    pawn7: { piece: whitepawn7, name: "whitepawn7" },
-    pawn8: { piece: whitepawn8, name: "whitepawn8" },
+    pawn1: { piece: whitepawn1, name: "whitepawn1",type:'white' },
+    pawn2: { piece: whitepawn2, name: "whitepawn2",type:'white' },
+    pawn3: { piece: whitepawn3, name: "whitepawn3",type:'white' },
+    pawn4: { piece: whitepawn4, name: "whitepawn4",type:'white' },
+    pawn5: { piece: whitepawn5, name: "whitepawn5",type:'white' },
+    pawn6: { piece: whitepawn6, name: "whitepawn6",type:'white' },
+    pawn7: { piece: whitepawn7, name: "whitepawn7",type:'white' },
+    pawn8: { piece: whitepawn8, name: "whitepawn8",type:'white' },
 
-    bishop1: { piece: whitebishop1, name: "whitebishop1" },
-    bishop2: { piece: whitebishop2, name: "whitebishop2" },
+    bishop1: { piece: whitebishop1, name: "whitebishop1" ,type:'white'},
+    bishop2: { piece: whitebishop2, name: "whitebishop2" ,type:'white'},
 
-    knight1: { piece: whiteknight1, name: "whiteknight1" },
-    knight2: { piece: whiteknight2, name: "whiteknight2" },
+    knight1: { piece: whiteknight1, name: "whiteknight1" ,type:'white'},
+    knight2: { piece: whiteknight2, name: "whiteknight2" ,type:'white'},
 
-    rook1: { piece: whiterook1, name: "whiterook1" },
-    rook2: { piece: whiterook2, name: "whiterook2" },
+    rook1: { piece: whiterook1, name: "whiterook1" ,type:'white'},
+    rook2: { piece: whiterook2, name: "whiterook2" ,type:'white'},
 
-    queen: { piece: whitequeen, name: "whitequeen" },
-    king: { piece: whiteking, name: "whiteking" },
+    queen: { piece: whitequeen, name: "whitequeen" ,type:'white'},
+    king: { piece: whiteking, name: "whiteking" ,type:'white'},
   };
 
   let boxState = {
@@ -167,13 +167,12 @@
       switch (currentpieceName) {
         case "blackpawn1":
           if (leftedges.includes(currentpieceIndex)) {
-
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
-            if (state.spaces[currentpieceIndex + 9].name !== undefined) {
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 9]);
@@ -187,7 +186,8 @@
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
-            if (state.spaces[currentpieceIndex + 7].name !== undefined) {
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 9]);
@@ -199,12 +199,12 @@
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
-            if (state.spaces[currentpieceIndex + 7].name !== undefined) {
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
-            if (state.spaces[currentpieceIndex + 9].name !== undefined) {
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 9]);
@@ -215,30 +215,338 @@
           break;
 
         case "blackpawn2":
+          if (leftedges.includes(currentpieceIndex)) {
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+
+          if (rightedges.includes(currentpieceIndex)) {
+            
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+          if(!(rightedges.includes(currentpieceIndex))&&!(leftedges.includes(currentpieceIndex))){
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
           console.log(currentpieceName);
           break;
 
         case "blackpawn3":
+          if (leftedges.includes(currentpieceIndex)) {
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+
+          if (rightedges.includes(currentpieceIndex)) {
+            
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+          if(!(rightedges.includes(currentpieceIndex))&&!(leftedges.includes(currentpieceIndex))){
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
           console.log(currentpieceName);
           break;
 
         case "blackpawn4":
+          if (leftedges.includes(currentpieceIndex)) {
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+
+          if (rightedges.includes(currentpieceIndex)) {
+            
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+          if(!(rightedges.includes(currentpieceIndex))&&!(leftedges.includes(currentpieceIndex))){
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
           console.log(currentpieceName);
           break;
 
         case "blackpawn5":
+          if (leftedges.includes(currentpieceIndex)) {
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+
+          if (rightedges.includes(currentpieceIndex)) {
+            
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+          if(!(rightedges.includes(currentpieceIndex))&&!(leftedges.includes(currentpieceIndex))){
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
           console.log(currentpieceName);
           break;
 
         case "blackpawn6":
+          if (leftedges.includes(currentpieceIndex)) {
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+
+          if (rightedges.includes(currentpieceIndex)) {
+            
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+          if(!(rightedges.includes(currentpieceIndex))&&!(leftedges.includes(currentpieceIndex))){
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
           console.log(currentpieceName);
           break;
 
         case "blackpawn7":
+          if (leftedges.includes(currentpieceIndex)) {
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+
+          if (rightedges.includes(currentpieceIndex)) {
+            
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+          if(!(rightedges.includes(currentpieceIndex))&&!(leftedges.includes(currentpieceIndex))){
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
           console.log(currentpieceName);
           break;
 
         case "blackpawn8":
+          if (leftedges.includes(currentpieceIndex)) {
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+
+          if (rightedges.includes(currentpieceIndex)) {
+            
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
+          if(!(rightedges.includes(currentpieceIndex))&&!(leftedges.includes(currentpieceIndex))){
+            if (state.spaces[currentpieceIndex + 8].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + 8);
+              boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 8]);
+            }
+            if (state.spaces[currentpieceIndex + 7].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 7);
+              boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+            if (state.spaces[currentpieceIndex + 9].type === 'white') {
+              ValidBoxes.push(currentpieceIndex + 9);
+              boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              // console.log(boxState.spaces[currentpieceIndex + 9]);
+            }
+          }
           console.log(currentpieceName);
           break;
 
@@ -305,7 +613,6 @@
       activeCell: (state.activeCell = action.boxIndex),
     };
 
-    return state;
   };
 
   const store = legacy_createStore(reducer);
