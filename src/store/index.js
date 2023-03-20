@@ -102,16 +102,16 @@ let boxState = {
     11: blackPieces.pawn4,
     12: blackPieces.pawn5,
     13: blackPieces.pawn6,
-    14: blackPieces.pawn7,
+    14: whitePieces.pawn1,
     15: blackPieces.pawn8,
-    16: "",
+    16: whitePieces.pawn1,
     17: "",
     18: "",
     19: "",
     20: "",
     21: "",
     22: "",
-    23: "",
+    23: whitePieces.pawn1,
     24: "",
     25: "",
     26: "",
@@ -779,11 +779,137 @@ const reducer = (state = boxState, action) => {
                 blackPieces.validmove;
             }
           }
+          proceed = true;
+          for (let index = 7; proceed === true; index += 7) {
+            if (
+              leftedges.includes(currentpieceIndex + index) ||
+              state.spaces[currentpieceIndex + index].type === "black"
+            ) {
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].type === "white") {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+            }
+          }
         }
+        ////////////////////////////////////////////////////////////////////////////
+        if (leftedges.includes(currentpieceIndex)) {
+          let proceed = true;
+          for (let index = 9; proceed === true; index += 9) {
+            if (
+              bottomedges.includes(currentpieceIndex + index) ||
+              state.spaces[currentpieceIndex + index].type === "black"
+            ) {
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].type === "white") {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+            }
+          }
+          proceed = true;
+          for (let index = 9; proceed === true; index += 9) {
+            if (
+              leftedges.includes(currentpieceIndex + index) ||
+              state.spaces[currentpieceIndex + index].type === "black"
+            ) {
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].type === "white") {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+            }
+          }
+        }
+        ////////////////////////////////////////////////////////////////////////////
         console.log(currentpieceName);
         break;
 
       case "blackrook2":
+        if (topedges.includes(currentpieceIndex)) {
+          let proceed = true;
+          for (let index = 9; proceed === true; index += 9) {
+            if (
+              rightedges.includes(currentpieceIndex + index) ||
+              state.spaces[currentpieceIndex + index].type === "black"
+            ) {
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].type === "white") {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+            }
+          }
+          proceed = true;
+          for (let index = 7; proceed === true; index += 7) {
+            if (
+              leftedges.includes(currentpieceIndex + index) ||
+              state.spaces[currentpieceIndex + index].type === "black"
+            ) {
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].type === "white") {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+              proceed = false;
+            }
+            if (state.spaces[currentpieceIndex + index].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + index);
+              original[currentpieceIndex + index] =
+                state.spaces[currentpieceIndex + index];
+              boxState.spaces[currentpieceIndex + index] =
+                blackPieces.validmove;
+            }
+          }
+        }
         console.log(currentpieceName);
         break;
 
@@ -808,27 +934,21 @@ const reducer = (state = boxState, action) => {
   }
 
   if (action.type === "movePiece") {
-    if (
-      state.spaces[state.activeCell].name !== "blackbishop1" ||
-      state.spaces[state.activeCell].name !== "blackbishop2"
-    ) {
-      // console.log();
-      state.spaces[action.position] = state.spaces[state.activeCell];
-      state.spaces[state.activeCell] = "";
-      ValidBoxes.forEach((idx) => {
-        if (state.spaces[idx].name === "validmove") {
-          state.spaces[idx] = original[idx];
-        }
-      });
-      // ValidBoxes.forEach(idx => {
-      //   if (idx!==action.position) {
-      //     console.log(state.spaces[idx],original.idx);
-      //     state.spaces[idx] = original.idx
-      //   }
-      //   })
-    } else {
-      console.log("hi this is the alternative");
-    }
+    // console.log();
+    state.spaces[action.position] = state.spaces[state.activeCell];
+    state.spaces[state.activeCell] = "";
+    ValidBoxes.forEach((idx) => {
+      if (state.spaces[idx].name === "validmove") {
+        state.spaces[idx] = original[idx];
+      }
+    });
+    // ValidBoxes.forEach(idx => {
+    //   if (idx!==action.position) {
+    //     console.log(state.spaces[idx],original.idx);
+    //     state.spaces[idx] = original.idx
+    //   }
+    //   })
+
     ValidBoxes = [];
   }
   return {
