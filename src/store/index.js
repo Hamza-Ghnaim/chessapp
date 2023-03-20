@@ -814,7 +814,7 @@ const reducer = (state = boxState, action) => {
             ) {
               proceed = false;
             }
-            if (state.spaces[currentpieceIndex + index].type === "white") {
+            if (state.spaces[currentpieceIndex + 2 * index].type === "white") {
               ValidBoxes.push(currentpieceIndex + index);
               original[currentpieceIndex + index] =
                 state.spaces[currentpieceIndex + index];
