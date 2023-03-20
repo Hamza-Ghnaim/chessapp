@@ -158,9 +158,15 @@
   let ValidBoxes = []
   const reducer = (state = boxState, action) => {
     if (action.type === "showValid") {
+      
       const currentpieceIndex = action.boxIndex;
       const currentpieceName = state.spaces[action.boxIndex].name;
       
+      ValidBoxes.forEach(idx => {
+        if (idx!==action.position) {
+          state.spaces[idx] = ""
+        }
+      });
 
 
 
