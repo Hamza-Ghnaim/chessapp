@@ -155,11 +155,12 @@
     activeCell: "",
     currentPiece: "",
   };
-
+  let ValidBoxes = []
   const reducer = (state = boxState, action) => {
     if (action.type === "showValid") {
       const currentpieceIndex = action.boxIndex;
       const currentpieceName = state.spaces[action.boxIndex].name;
+      
 
 
 
@@ -167,12 +168,12 @@
         case "blackpawn1":
           if (leftedges.includes(currentpieceIndex)) {
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
-              // ValidBoxes.push(currentpieceIndex + 8);
+              ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].name === undefined) {
-              // ValidBoxes.push(currentpieceIndex + 9);
+              ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
@@ -255,13 +256,15 @@
 
 
     if (action.type === "movePiece") {
-
-      console.log(state.spaces[action.position].piece);
-      console.log(state.spaces[action.position].name);
       
-      // state.spaces[action.position].name = state.spaces[state.activeCell].name;
       state.spaces[action.position] = state.spaces[state.activeCell];
       state.spaces[state.activeCell]=  "";
+      ValidBoxes.forEach(idx => {
+        if (idx!==action.position) {
+          state.spaces[idx] = ""
+        }
+      });
+      ValidBoxes = [];
       // console.log(state.activeCell);
       
     }
