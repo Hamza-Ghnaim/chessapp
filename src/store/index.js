@@ -166,7 +166,7 @@
       const currentpieceName = state.spaces[action.boxIndex].name;
 
       ValidBoxes.forEach(idx => {
-        if (idx!==action.position) {
+        if (state.spaces[idx].name==='validmove') {
           state.spaces[idx] = original[idx]
         }
       });
@@ -788,6 +788,11 @@
         // console.log();
         state.spaces[action.position] = state.spaces[state.activeCell];
         state.spaces[state.activeCell]= "";
+        ValidBoxes.forEach(idx => {
+          if (state.spaces[idx].name==='validmove') {
+            state.spaces[idx] = original[idx]
+          }
+        });
       // ValidBoxes.forEach(idx => {
       //   if (idx!==action.position) {
       //     console.log(state.spaces[idx],original.idx);
@@ -799,10 +804,6 @@
         console.log("hi this is the alternative");
       }
       ValidBoxes = [];      
-      // state.spaces.forEach(idx=>{
-      //   if(state.spaces[idx].name==='validmove'){
-      //     state.spaces[idx] = original[idx];
-      //   }})
     }
     return {
       spaces: state.spaces,
