@@ -33,6 +33,7 @@
   import whiteking from "../components/whitePieces/King.png";
 
   import { legacy_createStore } from "redux";
+  
 
   const leftedges = [0, 8, 16, 24, 32, 40, 48, 56];
   const rightedges = [7, 15, 23, 31, 39, 47, 55, 63];
@@ -155,20 +156,22 @@
     activeCell: "",
     currentPiece: "",
   };
-  let ValidBoxes = []
+
+  let ValidBoxes = [];
+  let original ={};
+
   const reducer = (state = boxState, action) => {
     if (action.type === "showValid") {
-      
       const currentpieceIndex = action.boxIndex;
       const currentpieceName = state.spaces[action.boxIndex].name;
-      
       ValidBoxes.forEach(idx => {
         if (idx!==action.position) {
           state.spaces[idx] = ""
         }
       });
 
-
+    console.log(ValidBoxes);
+    console.log(original);
 
       switch (currentpieceName) {
         case "blackpawn1":
@@ -176,11 +179,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+              
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -190,12 +198,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -203,16 +215,22 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -225,11 +243,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+              
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -239,12 +262,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -252,16 +279,22 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -273,11 +306,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+              
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -287,12 +325,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -300,16 +342,22 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -321,11 +369,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+              
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -335,12 +388,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -348,16 +405,22 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -369,11 +432,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+              
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -383,12 +451,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -396,16 +468,22 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -417,11 +495,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+              
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -431,12 +514,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -444,16 +531,22 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -465,11 +558,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+              
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -479,12 +577,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -492,16 +594,22 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -513,11 +621,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+              
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -527,12 +640,16 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
@@ -540,16 +657,22 @@
             if (state.spaces[currentpieceIndex + 8].name === undefined) {
               ValidBoxes.push(currentpieceIndex + 8);
               boxState.spaces[currentpieceIndex + 8] = blackPieces.validmove;
+              original[currentpieceIndex+8]=state.spaces[currentpieceIndex+8]
+
               // console.log(boxState.spaces[currentpieceIndex + 8]);
             }
             if (state.spaces[currentpieceIndex + 7].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 7);
               boxState.spaces[currentpieceIndex + 7] = blackPieces.validmove;
+              original[currentpieceIndex+7]=state.spaces[currentpieceIndex+7]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
             if (state.spaces[currentpieceIndex + 9].type === 'white') {
               ValidBoxes.push(currentpieceIndex + 9);
               boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+              original[currentpieceIndex+9]=state.spaces[currentpieceIndex+9]
+
               // console.log(boxState.spaces[currentpieceIndex + 9]);
             }
           }
