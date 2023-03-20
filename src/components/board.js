@@ -15,7 +15,6 @@ const Board = () => {
   };
 
   const showMoves = (idx) => {
-    // console.log(idx);
     dispatch({ type: "showValid", boxIndex: idx });
   };
 
@@ -27,7 +26,7 @@ const Board = () => {
     chessBox[key].name === "validmove"
       ? squares.push(
           <div
-            key={index}
+            key={key}
             style={{ height: "80px", width: "80px" }}
             className={`${styles} ${color}`}
             onClick={() => movePiece(index)}
@@ -45,7 +44,7 @@ const Board = () => {
         )
       : squares.push(
           <div
-            key={index}
+            key={key}
             style={{ height: "80px", width: "80px" }}
             className={`${styles} ${color}`}
             onClick={() => showMoves(index)}
