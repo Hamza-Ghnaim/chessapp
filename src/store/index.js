@@ -48,8 +48,8 @@
     pawn7: { piece: blackpawn7, name: "blackpawn7" },
     pawn8: { piece: blackpawn8, name: "blackpawn8" },
 
-    bishop1: { piece: balckbishop1, name: "blackbishop1" },
-    bishop2: { piece: balckbishop2, name: "blackbishop2" },
+    bishop1: { piece: balckbishop1, name: "blackbishop" },
+    bishop2: { piece: balckbishop2, name: "blackbishop" },
 
     knight1: { piece: blackknight1, name: "blackknight1" },
     knight2: { piece: blackknight2, name: "blackknight2" },
@@ -71,8 +71,8 @@
     pawn7: { piece: whitepawn7, name: "whitepawn7",type:'white' },
     pawn8: { piece: whitepawn8, name: "whitepawn8",type:'white' },
 
-    bishop1: { piece: whitebishop1, name: "whitebishop1" ,type:'white'},
-    bishop2: { piece: whitebishop2, name: "whitebishop2" ,type:'white'},
+    bishop1: { piece: whitebishop1, name: "whitebishop" ,type:'white'},
+    bishop2: { piece: whitebishop2, name: "whitebishop" ,type:'white'},
 
     knight1: { piece: whiteknight1, name: "whiteknight1" ,type:'white'},
     knight2: { piece: whiteknight2, name: "whiteknight2" ,type:'white'},
@@ -603,13 +603,19 @@
 
     if (action.type === "movePiece") {
       
-      state.spaces[action.position] = state.spaces[state.activeCell];
+      if(state.spaces[state.activeCell].name!=='blackbishop'){
+        // console.log();
+        state.spaces[action.position] = state.spaces[state.activeCell];
       state.spaces[state.activeCell]=  "";
       ValidBoxes.forEach(idx => {
         if (idx!==action.position) {
           state.spaces[idx] = ""
         }
-      });
+        })
+      }
+      else{
+        console.log("hi this is the alternative");
+      }
       ValidBoxes = [];      
     }
     return {
