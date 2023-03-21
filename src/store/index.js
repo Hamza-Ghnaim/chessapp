@@ -110,7 +110,7 @@ let boxState = {
     13: blackPieces.pawn6,
     14: blackPieces.pawn7,
     15: blackPieces.pawn8,
-    16: '', 
+    16: "",
     // 16:blackPieces.rook1,
     17: "",
     18: "",
@@ -766,8 +766,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "blackrook1":
-
-////////////////////// 111111
+        ////////////////////// 111111
 
         if (topedges.includes(currentpieceIndex)) {
           let proceed = true;
@@ -820,7 +819,7 @@ const reducer = (state = boxState, action) => {
           }
         }
 
-////////////////////////////// 22222222
+        ////////////////////////////// 22222222
 
         if (leftedges.includes(currentpieceIndex)) {
           let proceed = true;
@@ -873,7 +872,7 @@ const reducer = (state = boxState, action) => {
           }
         }
 
-//////////////////////////////////// 333333333
+        //////////////////////////////////// 333333333
 
         if (rightedges.includes(currentpieceIndex)) {
           let proceed = true;
@@ -905,7 +904,7 @@ const reducer = (state = boxState, action) => {
             let proceed = true;
             for (let index = 9; proceed === true; index += 9) {
               if (
-                topedges.includes(currentpieceIndex -index) ||
+                topedges.includes(currentpieceIndex - index) ||
                 state.spaces[currentpieceIndex - index].type === "black"
               ) {
                 proceed = false;
@@ -920,16 +919,16 @@ const reducer = (state = boxState, action) => {
               }
               if (state.spaces[currentpieceIndex - index].name === undefined) {
                 ValidBoxes.push(currentpieceIndex - index);
-                original[currentpieceIndex- index] =
+                original[currentpieceIndex - index] =
                   state.spaces[currentpieceIndex - index];
                 boxState.spaces[currentpieceIndex - index] =
                   blackPieces.validmove;
               }
             }
+          }
         }
-      }
 
-//////////////////////////////////// 444444444
+        //////////////////////////////////// 444444444
 
         if (bottomedges.includes(currentpieceIndex)) {
           let proceed = true;
@@ -961,7 +960,7 @@ const reducer = (state = boxState, action) => {
             let proceed = true;
             for (let index = 9; proceed === true; index += 9) {
               if (
-                leftedges.includes(currentpieceIndex -index) ||
+                leftedges.includes(currentpieceIndex - index) ||
                 state.spaces[currentpieceIndex - index].type === "black"
               ) {
                 proceed = false;
@@ -976,52 +975,53 @@ const reducer = (state = boxState, action) => {
               }
               if (state.spaces[currentpieceIndex - index].name === undefined) {
                 ValidBoxes.push(currentpieceIndex - index);
-                original[currentpieceIndex- index] =
+                original[currentpieceIndex - index] =
                   state.spaces[currentpieceIndex - index];
                 boxState.spaces[currentpieceIndex - index] =
                   blackPieces.validmove;
               }
             }
-        }
+          }
         }
 
-///////////////////////////// 55555555555555555555555555
+        ///////////////////////////// 55555555555555555555555555
 
-        if (! (topedges.includes(currentpieceIndex )||rightedges.includes(currentpieceIndex)||leftedges.includes(currentpieceIndex)||bottomedges.includes(currentpieceIndex)) ) {
+        if (
+          !(
+            topedges.includes(currentpieceIndex) ||
+            rightedges.includes(currentpieceIndex) ||
+            leftedges.includes(currentpieceIndex) ||
+            bottomedges.includes(currentpieceIndex)
+          )
+        ) {
           ////////right
           let proceed = true;
-          
-          for (let backindex = 7; proceed === true; backindex += 7) {
-
-            
+          for (let index = 7; proceed === true; index += 7) {
             if (
-              rightedges.includes(currentpieceIndex - backindex) ||
-              state.spaces[currentpieceIndex - backindex].type === "black"
+              topedges.includes(currentpieceIndex - index) ||
+              state.spaces[currentpieceIndex - index].type === "black"
             ) {
               proceed = false;
             }
-            if (
-              rightedges.includes(currentpieceIndex - backindex) ||
-              state.spaces[currentpieceIndex - backindex].type === "black"
-            ) {
-              proceed = false;
-            }
-
-            ////////
-            if (state.spaces[currentpieceIndex - backindex].type === "white") {
-              ValidBoxes.push(currentpieceIndex - backindex);
-              original[currentpieceIndex - backindex] =
-                state.spaces[currentpieceIndex - backindex];
-              boxState.spaces[currentpieceIndex - backindex] =
+            if (state.spaces[currentpieceIndex - index].type === "white") {
+              ValidBoxes.push(currentpieceIndex - index);
+              original[currentpieceIndex - index] =
+                state.spaces[currentpieceIndex - index];
+              boxState.spaces[currentpieceIndex - index] =
                 blackPieces.validmove;
               proceed = false;
             }
-
-            ////////
-
+            if (state.spaces[currentpieceIndex - index].name === undefined) {
+              ValidBoxes.push(currentpieceIndex - index);
+              original[currentpieceIndex - index] =
+                state.spaces[currentpieceIndex - index];
+              boxState.spaces[currentpieceIndex - index] =
+                blackPieces.validmove;
+            }
           }
+
           ///// backward right
-          proceed = true
+          proceed = true;
           for (let forwardindex = 9; proceed === true; forwardindex += 9) {
             if (
               rightedges.includes(currentpieceIndex + forwardindex) ||
@@ -1031,7 +1031,9 @@ const reducer = (state = boxState, action) => {
             }
 
             ////////
-            if (state.spaces[currentpieceIndex + forwardindex].type === "white") {
+            if (
+              state.spaces[currentpieceIndex + forwardindex].type === "white"
+            ) {
               ValidBoxes.push(currentpieceIndex + forwardindex);
               original[currentpieceIndex + forwardindex] =
                 state.spaces[currentpieceIndex + forwardindex];
@@ -1041,7 +1043,9 @@ const reducer = (state = boxState, action) => {
             }
 
             ////////
-            if (state.spaces[currentpieceIndex + forwardindex].name === undefined) {
+            if (
+              state.spaces[currentpieceIndex + forwardindex].name === undefined
+            ) {
               ValidBoxes.push(currentpieceIndex + forwardindex);
               original[currentpieceIndex + forwardindex] =
                 state.spaces[currentpieceIndex + forwardindex];
@@ -1052,7 +1056,7 @@ const reducer = (state = boxState, action) => {
 
           /////////// left
 
-          proceed = true
+          proceed = true;
           for (let forwardindex = 7; proceed === true; forwardindex += 7) {
             if (
               leftedges.includes(currentpieceIndex + forwardindex) ||
@@ -1062,7 +1066,9 @@ const reducer = (state = boxState, action) => {
             }
 
             ////////
-            if (state.spaces[currentpieceIndex + forwardindex].type === "white") {
+            if (
+              state.spaces[currentpieceIndex + forwardindex].type === "white"
+            ) {
               ValidBoxes.push(currentpieceIndex + forwardindex);
               original[currentpieceIndex + forwardindex] =
                 state.spaces[currentpieceIndex + forwardindex];
@@ -1072,7 +1078,9 @@ const reducer = (state = boxState, action) => {
             }
 
             ////////
-            if (state.spaces[currentpieceIndex + forwardindex].name === undefined) {
+            if (
+              state.spaces[currentpieceIndex + forwardindex].name === undefined
+            ) {
               ValidBoxes.push(currentpieceIndex + forwardindex);
               original[currentpieceIndex + forwardindex] =
                 state.spaces[currentpieceIndex + forwardindex];
@@ -1082,8 +1090,8 @@ const reducer = (state = boxState, action) => {
           }
           /////////// left backward
 
-          proceed = true
-          for (let forwardindex = -9; proceed === true; forwardindex -=9) {
+          proceed = true;
+          for (let forwardindex = -9; proceed === true; forwardindex -= 9) {
             if (
               leftedges.includes(currentpieceIndex + forwardindex) ||
               state.spaces[currentpieceIndex + forwardindex].type === "black"
@@ -1092,7 +1100,9 @@ const reducer = (state = boxState, action) => {
             }
 
             ////////
-            if (state.spaces[currentpieceIndex + forwardindex].type === "white") {
+            if (
+              state.spaces[currentpieceIndex + forwardindex].type === "white"
+            ) {
               ValidBoxes.push(currentpieceIndex + forwardindex);
               original[currentpieceIndex + forwardindex] =
                 state.spaces[currentpieceIndex + forwardindex];
@@ -1102,7 +1112,9 @@ const reducer = (state = boxState, action) => {
             }
 
             ////////
-            if (state.spaces[currentpieceIndex + forwardindex].name === undefined) {
+            if (
+              state.spaces[currentpieceIndex + forwardindex].name === undefined
+            ) {
               ValidBoxes.push(currentpieceIndex + forwardindex);
               original[currentpieceIndex + forwardindex] =
                 state.spaces[currentpieceIndex + forwardindex];
