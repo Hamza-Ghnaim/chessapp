@@ -39,6 +39,8 @@ const rightedges = [7, 15, 23, 31, 39, 47, 55, 63];
 const topedges = [0, 1, 2, 3, 4, 5, 6, 7];
 const bottomedges = [56, 57, 58, 59, 60, 61, 62, 63];
 
+// const empty = {name: "",type:''}
+
 let blackPieces = {
   validmove: { piece: possibleBox, name: "validmove", type: "valid" },
   pawn1: { piece: blackpawn1, name: "blackpawn1", type: "black" },
@@ -99,6 +101,7 @@ let boxState = {
     7: blackPieces.bishop2,
     8: blackPieces.pawn1,
     9: blackPieces.pawn2,
+    // 9:{name:'',type:''},
     // 9:whitePieces.pawn2,
     10: blackPieces.pawn3,
     11: blackPieces.pawn4,
@@ -987,7 +990,16 @@ const reducer = (state = boxState, action) => {
         if (! (topedges.includes(currentpieceIndex )||rightedges.includes(currentpieceIndex)||leftedges.includes(currentpieceIndex)||bottomedges.includes(currentpieceIndex)) ) {
           ////////right
           let proceed = true;
+          
           for (let backindex = 7; proceed === true; backindex += 7) {
+
+            
+            if (
+              rightedges.includes(currentpieceIndex - backindex) ||
+              state.spaces[currentpieceIndex - backindex].type === "black"
+            ) {
+              proceed = false;
+            }
             if (
               rightedges.includes(currentpieceIndex - backindex) ||
               state.spaces[currentpieceIndex - backindex].type === "black"
@@ -1006,13 +1018,7 @@ const reducer = (state = boxState, action) => {
             }
 
             ////////
-            if (state.spaces[currentpieceIndex - backindex].name === undefined) {
-              ValidBoxes.push(currentpieceIndex - backindex);
-              original[currentpieceIndex - backindex] =
-                state.spaces[currentpieceIndex - backindex];
-              boxState.spaces[currentpieceIndex - backindex] =
-                blackPieces.validmove;
-            }
+
           }
           ///// backward right
           proceed = true
