@@ -91,6 +91,7 @@ let boxState = {
     0: blackPieces.bishop1,
     1: blackPieces.knight1,
     2: blackPieces.rook1,
+    // 2:whitePieces.pawn2,
     3: blackPieces.queen,
     4: blackPieces.king,
     5: blackPieces.rook2,
@@ -98,17 +99,21 @@ let boxState = {
     7: blackPieces.bishop2,
     8: blackPieces.pawn1,
     9: blackPieces.pawn2,
+    // 9:whitePieces.pawn2,
     10: blackPieces.pawn3,
     11: blackPieces.pawn4,
+    // 11:whitePieces.pawn2,
     12: blackPieces.pawn5,
     13: blackPieces.pawn6,
-    14: "",
+    14: blackPieces.pawn7,
     15: blackPieces.pawn8,
-    16: whitePieces.pawn1,
+    16: '', 
+    // 16:blackPieces.rook1,
     17: "",
     18: "",
     19: "",
     20: "",
+    // 20:whitePieces.pawn2,
     21: "",
     22: "",
     23: "",
@@ -132,6 +137,7 @@ let boxState = {
     41: "",
     42: "",
     43: "",
+    // 43:whitePieces.pawn2,
     44: "",
     45: "",
     46: "",
@@ -141,6 +147,7 @@ let boxState = {
     50: whitePieces.pawn3,
     51: whitePieces.pawn4,
     52: whitePieces.pawn5,
+    // 52:'',
     53: whitePieces.pawn6,
     54: whitePieces.pawn7,
     55: whitePieces.pawn8,
@@ -150,6 +157,7 @@ let boxState = {
     59: whitePieces.queen,
     60: whitePieces.king,
     61: whitePieces.rook2,
+    // 61:'',
     62: whitePieces.knight2,
     63: whitePieces.bishop2,
   },
@@ -814,7 +822,7 @@ const reducer = (state = boxState, action) => {
             ) {
               proceed = false;
             }
-            if (state.spaces[currentpieceIndex + 2 * index].type === "white") {
+            if (state.spaces[currentpieceIndex + index].type === "white") {
               ValidBoxes.push(currentpieceIndex + index);
               original[currentpieceIndex + index] =
                 state.spaces[currentpieceIndex + index];
@@ -831,26 +839,26 @@ const reducer = (state = boxState, action) => {
             }
           }
           proceed = true;
-          for (let index = 9; proceed === true; index += 9) {
+          for (let index = 7; proceed === true; index += 7) {
             if (
-              leftedges.includes(currentpieceIndex + index) ||
-              state.spaces[currentpieceIndex + index].type === "black"
+              topedges.includes(currentpieceIndex - index) ||
+              state.spaces[currentpieceIndex - index].type === "black"
             ) {
               proceed = false;
             }
-            if (state.spaces[currentpieceIndex + index].type === "white") {
-              ValidBoxes.push(currentpieceIndex + index);
-              original[currentpieceIndex + index] =
-                state.spaces[currentpieceIndex + index];
-              boxState.spaces[currentpieceIndex + index] =
+            if (state.spaces[currentpieceIndex - index].type === "white") {
+              ValidBoxes.push(currentpieceIndex - index);
+              original[currentpieceIndex - index] =
+                state.spaces[currentpieceIndex - index];
+              boxState.spaces[currentpieceIndex - index] =
                 blackPieces.validmove;
               proceed = false;
             }
-            if (state.spaces[currentpieceIndex + index].name === undefined) {
-              ValidBoxes.push(currentpieceIndex + index);
-              original[currentpieceIndex + index] =
-                state.spaces[currentpieceIndex + index];
-              boxState.spaces[currentpieceIndex + index] =
+            if (state.spaces[currentpieceIndex - index].name === undefined) {
+              ValidBoxes.push(currentpieceIndex - index);
+              original[currentpieceIndex - index] =
+                state.spaces[currentpieceIndex - index];
+              boxState.spaces[currentpieceIndex - index] =
                 blackPieces.validmove;
             }
           }
