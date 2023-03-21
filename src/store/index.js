@@ -985,6 +985,7 @@ const reducer = (state = boxState, action) => {
 ///////////////////////////// 55555555555555555555555555
 
         if (! (topedges.includes(currentpieceIndex )||rightedges.includes(currentpieceIndex)||leftedges.includes(currentpieceIndex)||bottomedges.includes(currentpieceIndex)) ) {
+          ////////right
           let proceed = true;
           for (let backindex = 7; proceed === true; backindex += 7) {
             if (
@@ -1013,7 +1014,7 @@ const reducer = (state = boxState, action) => {
                 blackPieces.validmove;
             }
           }
-          ///// backward movement
+          ///// backward right
           proceed = true
           for (let forwardindex = 9; proceed === true; forwardindex += 9) {
             if (
@@ -1042,33 +1043,67 @@ const reducer = (state = boxState, action) => {
                 blackPieces.validmove;
             }
           }
-        //   proceed = true;
-        //   if (rightedges.includes(currentpieceIndex)) {
-        //     let proceed = true;
-        //     for (let index = 9; proceed === true; index += 9) {
-        //       if (
-        //         leftedges.includes(currentpieceIndex -index) ||
-        //         state.spaces[currentpieceIndex - index].type === "black"
-        //       ) {
-        //         proceed = false;
-        //       }
-        //       if (state.spaces[currentpieceIndex + index].type === "white") {
-        //         ValidBoxes.push(currentpieceIndex + index);
-        //         original[currentpieceIndex + index] =
-        //           state.spaces[currentpieceIndex + index];
-        //         boxState.spaces[currentpieceIndex + index] =
-        //           blackPieces.validmove;
-        //         proceed = false;
-        //       }
-        //       if (state.spaces[currentpieceIndex + index].name === undefined) {
-        //         ValidBoxes.push(currentpieceIndex + index);
-        //         original[currentpieceIndex+ index] =
-        //           state.spaces[currentpieceIndex + index];
-        //         boxState.spaces[currentpieceIndex + index] =
-        //           blackPieces.validmove;
-        //       }
-        //     }
-        // }
+
+          /////////// left
+
+          proceed = true
+          for (let forwardindex = 7; proceed === true; forwardindex += 7) {
+            if (
+              leftedges.includes(currentpieceIndex + forwardindex) ||
+              state.spaces[currentpieceIndex + forwardindex].type === "black"
+            ) {
+              proceed = false;
+            }
+
+            ////////
+            if (state.spaces[currentpieceIndex + forwardindex].type === "white") {
+              ValidBoxes.push(currentpieceIndex + forwardindex);
+              original[currentpieceIndex + forwardindex] =
+                state.spaces[currentpieceIndex + forwardindex];
+              boxState.spaces[currentpieceIndex + forwardindex] =
+                blackPieces.validmove;
+              proceed = false;
+            }
+
+            ////////
+            if (state.spaces[currentpieceIndex + forwardindex].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + forwardindex);
+              original[currentpieceIndex + forwardindex] =
+                state.spaces[currentpieceIndex + forwardindex];
+              boxState.spaces[currentpieceIndex + forwardindex] =
+                blackPieces.validmove;
+            }
+          }
+          /////////// left backward
+
+          proceed = true
+          for (let forwardindex = -9; proceed === true; forwardindex -=9) {
+            if (
+              leftedges.includes(currentpieceIndex + forwardindex) ||
+              state.spaces[currentpieceIndex + forwardindex].type === "black"
+            ) {
+              proceed = false;
+            }
+
+            ////////
+            if (state.spaces[currentpieceIndex + forwardindex].type === "white") {
+              ValidBoxes.push(currentpieceIndex + forwardindex);
+              original[currentpieceIndex + forwardindex] =
+                state.spaces[currentpieceIndex + forwardindex];
+              boxState.spaces[currentpieceIndex + forwardindex] =
+                blackPieces.validmove;
+              proceed = false;
+            }
+
+            ////////
+            if (state.spaces[currentpieceIndex + forwardindex].name === undefined) {
+              ValidBoxes.push(currentpieceIndex + forwardindex);
+              original[currentpieceIndex + forwardindex] =
+                state.spaces[currentpieceIndex + forwardindex];
+              boxState.spaces[currentpieceIndex + forwardindex] =
+                blackPieces.validmove;
+            }
+          }
         }
 
         console.log(currentpieceName);
