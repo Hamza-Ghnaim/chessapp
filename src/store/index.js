@@ -1032,6 +1032,7 @@ const reducer = (state = boxState, action) => {
                 blackPieces.validmove;
             }
             ///////////////
+              
           }
         //   proceed = true;
         //   if (rightedges.includes(currentpieceIndex)) {
