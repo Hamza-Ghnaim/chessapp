@@ -243,9 +243,9 @@ const blackPawnsMovements = (
 };
 
 const checkmate = ()=>{
-  // console.log('check mate');
-  // alert('check mate');
-  // window.location.reload();
+  console.log("checkmate");
+  alert('checkmate, Game Over')
+  window.location.reload();
 }
 const whitePawnsMovements = (
   currentpieceIndex,
@@ -254,14 +254,10 @@ const whitePawnsMovements = (
   action
 ) => {
   if (state.spaces[currentpieceIndex - 9].name==='blackking') {
-    console.log("checkmate");
-    alert('checkmate, Game Over')
-    window.location.reload();
+    checkmate();
   }
   if (state.spaces[currentpieceIndex - 7].name==='blackking') {
-    console.log("checkmate");
-    alert('checkmate, Game Over')
-    window.location.reload();
+    checkmate();
   }
   if (leftedges.includes(currentpieceIndex)) {
     // if (state.spaces[currentpieceIndex - 9].name==='blackking') {
