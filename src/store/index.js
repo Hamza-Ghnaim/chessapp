@@ -172,6 +172,7 @@ let boxState = {
   whiteTurn: true,
   activeCell: "",
   currentPiece: "",
+  history:[]
 };
 
 let ValidBoxes = [];
@@ -1148,6 +1149,7 @@ const reducer = (state = boxState, action) => {
           currentPiece: state.currentPiece,
           whiteTurn: state.whiteTurn,
           activeCell: (state.activeCell = action.boxIndex),
+          history:state.history
         };
     }
 
@@ -1269,6 +1271,8 @@ const reducer = (state = boxState, action) => {
         currentPiece: state.currentPiece,
         whiteTurn: state.whiteTurn,
         activeCell: (state.activeCell = action.boxIndex),
+        history:state.history
+
       };
     }
     }
@@ -1276,8 +1280,11 @@ const reducer = (state = boxState, action) => {
 
 
   if (action.type === "movePiece") {
+
+    state.history.push(`${state.spaces[state.activeCell].name} moved from ${state.activeCell} to ${action.position}`)
     state.spaces[action.position] = state.spaces[state.activeCell];
     state.spaces[state.activeCell] = "";
+    // console.log();
     ValidBoxes.forEach((idx) => {
       if (state.spaces[idx].name === "validmove") {
         state.spaces[idx] = original[idx];
@@ -1290,6 +1297,8 @@ const reducer = (state = boxState, action) => {
     currentPiece: state.currentPiece,
     whiteTurn: !state.whiteTurn,
     activeCell: (state.activeCell = action.boxIndex),
+    history:state.history
+
   };
 };
 

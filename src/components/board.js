@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./board.module.css";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -7,6 +7,8 @@ const Board = () => {
   const dispatch = useDispatch();
   const chessBox = useSelector((state) => state.spaces);
   const activepiece = useSelector((state) => state.activeCell);
+  const History = useSelector((state)=>state.history)
+  // console.log(History);
   let squares = [];
 
   const movePiece = (idx) => {
@@ -63,12 +65,17 @@ const Board = () => {
   });
 
   return (
-    <div className={styles.gridContainer}>
-      {squares.map((square, index) => (
-        <div key={index}>{square}</div>
-      ))}
+    <div className={styles.outer}>
+      <div className={styles.gridContainer}>
+        {squares.map((square, index) => (
+          <div key={index}>{square}</div>
+        ))}
+      </div>
+      {/* <hr/> */}
+      <ul>
+      { History && History.map((reading)=>(<li key = {reading}>{reading}</li>))}
+      </ul>
     </div>
   );
 };
-
 export default Board;
