@@ -107,7 +107,8 @@ let boxState = {
     11: blackPieces.pawn4,
     // 11:whitePieces.pawn2,
     12: blackPieces.pawn5,
-    13: blackPieces.pawn6,
+    // 13: blackPieces.pawn6,
+    13:'',
     14: blackPieces.pawn7,
     15: blackPieces.pawn8,
     16: "",
@@ -117,7 +118,8 @@ let boxState = {
     19: "",
     20: "",
     // 20:whitePieces.pawn2,
-    21: "",
+    // 21: "",
+    21:whitePieces.pawn8,
     22: "",
     23: "",
     24: "",
@@ -239,13 +241,32 @@ const blackPawnsMovements = (
     }
   }
 };
+
+const checkmate = ()=>{
+  // console.log('check mate');
+  // alert('check mate');
+  // window.location.reload();
+}
 const whitePawnsMovements = (
   currentpieceIndex,
   currentpieceName,
   state = boxState,
   action
 ) => {
+  if (state.spaces[currentpieceIndex - 9].name==='blackking') {
+    console.log("checkmate");
+    alert('checkmate, Game Over')
+    window.location.reload();
+  }
+  if (state.spaces[currentpieceIndex - 7].name==='blackking') {
+    console.log("checkmate");
+    alert('checkmate, Game Over')
+    window.location.reload();
+  }
   if (leftedges.includes(currentpieceIndex)) {
+    // if (state.spaces[currentpieceIndex - 9].name==='blackking') {
+    //   console.log(state.spaces[currentpieceIndex - 9].name);
+    // }
     if (state.spaces[currentpieceIndex - 8].name === undefined) {
       ValidBoxes.push(currentpieceIndex - 8);
       original[currentpieceIndex - 8] = state.spaces[currentpieceIndex - 8];
