@@ -34,10 +34,10 @@ import whiteking from "../components/whitePieces/King.png";
 
 import { legacy_createStore } from "redux";
 
-const leftedges = [0, 8, 16, 24, 32, 40, 48, 56];
+const leftedges = [0, 8, 16, 24, 32, 40, 48];
 const rightedges = [7, 15, 23, 31, 39, 47, 55, 63];
-const topedges = [0, 1, 2, 3, 4, 5, 6, 7];
-const bottomedges = [56, 57, 58, 59, 60, 61, 62, 63];
+const topedges = [1, 2, 3, 4, 5, 6];
+const bottomedges = [56, 57, 58, 59, 60, 61, 62];
 
 // const empty = {name: "",type:''}
 
@@ -234,6 +234,72 @@ const blackPawnsMovements = (
       ValidBoxes.push(currentpieceIndex + 9);
       original[currentpieceIndex + 9] = state.spaces[currentpieceIndex + 9];
       boxState.spaces[currentpieceIndex + 9] = blackPieces.validmove;
+
+      // console.log(boxState.spaces[currentpieceIndex + 9]);
+    }
+  }
+};
+const whitePawnsMovements = (
+  currentpieceIndex,
+  currentpieceName,
+  state = boxState,
+  action
+) => {
+  if (leftedges.includes(currentpieceIndex)) {
+    if (state.spaces[currentpieceIndex - 8].name === undefined) {
+      ValidBoxes.push(currentpieceIndex - 8);
+      original[currentpieceIndex - 8] = state.spaces[currentpieceIndex - 8];
+      boxState.spaces[currentpieceIndex - 8] = blackPieces.validmove;
+
+      // console.log(boxState.spaces[currentpieceIndex + 8]);
+    }
+    if (state.spaces[currentpieceIndex - 9].type === "black") {
+      ValidBoxes.push(currentpieceIndex - 9);
+      original[currentpieceIndex - 9] = state.spaces[currentpieceIndex - 9];
+      boxState.spaces[currentpieceIndex - 9] = blackPieces.validmove;
+
+      // console.log(boxState.spaces[currentpieceIndex + 9]);
+    }
+  }
+
+  if (rightedges.includes(currentpieceIndex)) {
+    if (state.spaces[currentpieceIndex - 8].name === undefined) {
+      ValidBoxes.push(currentpieceIndex - 8);
+      original[currentpieceIndex - 8] = state.spaces[currentpieceIndex - 8];
+      boxState.spaces[currentpieceIndex - 8] = blackPieces.validmove;
+
+      // console.log(boxState.spaces[currentpieceIndex + 8]);
+    }
+    if (state.spaces[currentpieceIndex - 7].type === "black") {
+      ValidBoxes.push(currentpieceIndex - 7);
+      original[currentpieceIndex - 7] = state.spaces[currentpieceIndex - 7];
+      boxState.spaces[currentpieceIndex - 7] = blackPieces.validmove;
+
+      // console.log(boxState.spaces[currentpieceIndex + 9]);
+    }
+  }
+  if (
+    !rightedges.includes(currentpieceIndex) &&
+    !leftedges.includes(currentpieceIndex)
+  ) {
+    if (state.spaces[currentpieceIndex - 8].name === undefined) {
+      ValidBoxes.push(currentpieceIndex - 8);
+      original[currentpieceIndex - 8] = state.spaces[currentpieceIndex - 8];
+      boxState.spaces[currentpieceIndex - 8] = blackPieces.validmove;
+
+      // console.log(boxState.spaces[currentpieceIndex + 8]);
+    }
+    if (state.spaces[currentpieceIndex - 7].type === "black") {
+      ValidBoxes.push(currentpieceIndex - 7);
+      original[currentpieceIndex - 7] = state.spaces[currentpieceIndex - 7];
+      boxState.spaces[currentpieceIndex - 7] = blackPieces.validmove;
+
+      // console.log(boxState.spaces[currentpieceIndex + 9]);
+    }
+    if (state.spaces[currentpieceIndex - 9].type === "black") {
+      ValidBoxes.push(currentpieceIndex - 9);
+      original[currentpieceIndex- 9] = state.spaces[currentpieceIndex - 9];
+      boxState.spaces[currentpieceIndex - 9] = blackPieces.validmove;
 
       // console.log(boxState.spaces[currentpieceIndex + 9]);
     }
@@ -575,6 +641,341 @@ const blackRooksMovements = (
   }
 };
 
+const whitekRooksMovements = (
+  currentpieceIndex,
+  currentpieceName,
+  state = boxState,
+  action
+) => {
+  ////////////////////// 111111
+
+  if (topedges.includes(currentpieceIndex)) {
+    let proceed = true;
+    for (let index = 9; proceed === true; index += 9) {
+      if (
+        rightedges.includes(currentpieceIndex + index) ||
+        state.spaces[currentpieceIndex + index].type === "white"
+      ) {
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex + index].type === "black") {
+        ValidBoxes.push(currentpieceIndex + index);
+        original[currentpieceIndex + index] =
+          state.spaces[currentpieceIndex + index];
+        boxState.spaces[currentpieceIndex + index] = blackPieces.validmove;
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex + index].name === undefined) {
+        ValidBoxes.push(currentpieceIndex + index);
+        original[currentpieceIndex + index] =
+          state.spaces[currentpieceIndex + index];
+        boxState.spaces[currentpieceIndex + index] = blackPieces.validmove;
+      }
+    }
+    proceed = true;
+    for (let index = 7; proceed === true; index += 7) {
+      if (
+        leftedges.includes(currentpieceIndex + index) ||
+        state.spaces[currentpieceIndex + index].type === "white"
+      ) {
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex + index].type === "black") {
+        ValidBoxes.push(currentpieceIndex + index);
+        original[currentpieceIndex + index] =
+          state.spaces[currentpieceIndex + index];
+        boxState.spaces[currentpieceIndex + index] = blackPieces.validmove;
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex + index].name === undefined) {
+        ValidBoxes.push(currentpieceIndex + index);
+        original[currentpieceIndex + index] =
+          state.spaces[currentpieceIndex + index];
+        boxState.spaces[currentpieceIndex + index] = blackPieces.validmove;
+      }
+    }
+  }
+
+  ////////////////////////////// 22222222
+
+  if (leftedges.includes(currentpieceIndex)) {
+    let proceed = true;
+    for (let index = 9; proceed === true; index += 9) {
+      if (
+        bottomedges.includes(currentpieceIndex + index) ||
+        state.spaces[currentpieceIndex + index].type === "white"
+      ) {
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex + index].type === "black") {
+        ValidBoxes.push(currentpieceIndex + index);
+        original[currentpieceIndex + index] =
+          state.spaces[currentpieceIndex + index];
+        boxState.spaces[currentpieceIndex + index] = blackPieces.validmove;
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex + index].name === undefined) {
+        ValidBoxes.push(currentpieceIndex + index);
+        original[currentpieceIndex + index] =
+          state.spaces[currentpieceIndex + index];
+        boxState.spaces[currentpieceIndex + index] = blackPieces.validmove;
+      }
+    }
+    proceed = true;
+    for (let index = 7; proceed === true; index += 7) {
+      if (
+        topedges.includes(currentpieceIndex - index) ||
+        state.spaces[currentpieceIndex - index].type === "white"
+      ) {
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex - index].type === "black") {
+        ValidBoxes.push(currentpieceIndex - index);
+        original[currentpieceIndex - index] =
+          state.spaces[currentpieceIndex - index];
+        boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex - index].name === undefined) {
+        ValidBoxes.push(currentpieceIndex - index);
+        original[currentpieceIndex - index] =
+          state.spaces[currentpieceIndex - index];
+        boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+      }
+    }
+  }
+
+  //////////////////////////////////// 333333333
+
+  if (rightedges.includes(currentpieceIndex)) {
+    let proceed = true;
+    for (let index = 7; proceed === true; index += 7) {
+      if (
+        bottomedges.includes(currentpieceIndex + index) ||
+        state.spaces[currentpieceIndex + index].type === "white"
+      ) {
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex + index].type === "black") {
+        ValidBoxes.push(currentpieceIndex + index);
+        original[currentpieceIndex + index] =
+          state.spaces[currentpieceIndex + index];
+        boxState.spaces[currentpieceIndex + index] = blackPieces.validmove;
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex + index].name === undefined) {
+        ValidBoxes.push(currentpieceIndex + index);
+        original[currentpieceIndex + index] =
+          state.spaces[currentpieceIndex + index];
+        boxState.spaces[currentpieceIndex + index] = blackPieces.validmove;
+      }
+    }
+    proceed = true;
+    if (rightedges.includes(currentpieceIndex)) {
+      let proceed = true;
+      for (let index = 9; proceed === true; index += 9) {
+        if (
+          topedges.includes(currentpieceIndex - index) ||
+          state.spaces[currentpieceIndex - index].type === "white"
+        ) {
+          proceed = false;
+        }
+        if (state.spaces[currentpieceIndex - index].type === "black") {
+          ValidBoxes.push(currentpieceIndex - index);
+          original[currentpieceIndex - index] =
+            state.spaces[currentpieceIndex - index];
+          boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+          proceed = false;
+        }
+        if (state.spaces[currentpieceIndex - index].name === undefined) {
+          ValidBoxes.push(currentpieceIndex - index);
+          original[currentpieceIndex - index] =
+            state.spaces[currentpieceIndex - index];
+          boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+        }
+      }
+    }
+  }
+
+  //////////////////////////////////// 444444444
+
+  if (bottomedges.includes(currentpieceIndex)) {
+    let proceed = true;
+    for (let index =7; proceed === true; index += 7) {
+      if (
+        rightedges.includes(currentpieceIndex - index) ||
+        state.spaces[currentpieceIndex - index].type === "white"
+      ) {
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex - index].type === "black") {
+        ValidBoxes.push(currentpieceIndex - index);
+        original[currentpieceIndex - index] =
+          state.spaces[currentpieceIndex - index];
+        boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex - index].name === undefined) {
+        ValidBoxes.push(currentpieceIndex - index);
+        original[currentpieceIndex - index] =
+          state.spaces[currentpieceIndex - index];
+        boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+      }
+    }
+    proceed = true;
+    if (bottomedges.includes(currentpieceIndex)) {
+      let proceed = true;
+      for (let index = 9; proceed === true; index += 9) {
+        if (
+          leftedges.includes(currentpieceIndex - index) ||
+          state.spaces[currentpieceIndex - index].type === "white"
+        ) {
+          proceed = false;
+        }
+        if (state.spaces[currentpieceIndex - index].type === "black") {
+          ValidBoxes.push(currentpieceIndex - index);
+          original[currentpieceIndex - index] =
+            state.spaces[currentpieceIndex - index];
+          boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+          proceed = false;
+        }
+        if (state.spaces[currentpieceIndex - index].name === undefined) {
+          ValidBoxes.push(currentpieceIndex - index);
+          original[currentpieceIndex - index] =
+            state.spaces[currentpieceIndex - index];
+          boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+        }
+      }
+    }
+  }
+
+  ///////////////////////////// 55555555555555555555555555
+
+  if (
+    !(
+      topedges.includes(currentpieceIndex) ||
+      rightedges.includes(currentpieceIndex) ||
+      leftedges.includes(currentpieceIndex) ||
+      bottomedges.includes(currentpieceIndex)
+    )
+  ) {
+    ////////right
+    let proceed = true;
+    for (let index = 7; proceed === true; index += 7) {
+      if (
+        topedges.includes(currentpieceIndex - index) ||
+        state.spaces[currentpieceIndex - index].type === "white"
+      ) {
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex - index].type === "black") {
+        ValidBoxes.push(currentpieceIndex - index);
+        original[currentpieceIndex - index] =
+          state.spaces[currentpieceIndex - index];
+        boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+        proceed = false;
+      }
+      if (state.spaces[currentpieceIndex - index].name === undefined) {
+        ValidBoxes.push(currentpieceIndex - index);
+        original[currentpieceIndex - index] =
+          state.spaces[currentpieceIndex - index];
+        boxState.spaces[currentpieceIndex - index] = blackPieces.validmove;
+      }
+    }
+
+    ///// backward right
+    proceed = true;
+    for (let forwardindex = 9; proceed === true; forwardindex += 9) {
+      if (
+        rightedges.includes(currentpieceIndex + forwardindex) ||
+        state.spaces[currentpieceIndex + forwardindex].type === "white"
+      ) {
+        proceed = false;
+      }
+
+      ////////
+      if (state.spaces[currentpieceIndex + forwardindex].type === "black") {
+        ValidBoxes.push(currentpieceIndex + forwardindex);
+        original[currentpieceIndex + forwardindex] =
+          state.spaces[currentpieceIndex + forwardindex];
+        boxState.spaces[currentpieceIndex + forwardindex] =
+          blackPieces.validmove;
+        proceed = false;
+      }
+
+      ////////
+      if (state.spaces[currentpieceIndex + forwardindex].name === undefined) {
+        ValidBoxes.push(currentpieceIndex + forwardindex);
+        original[currentpieceIndex + forwardindex] =
+          state.spaces[currentpieceIndex + forwardindex];
+        boxState.spaces[currentpieceIndex + forwardindex] =
+          blackPieces.validmove;
+      }
+    }
+
+    /////////// left
+
+    proceed = true;
+    for (let forwardindex = 7; proceed === true; forwardindex += 7) {
+      if (
+        leftedges.includes(currentpieceIndex + forwardindex) ||
+        state.spaces[currentpieceIndex + forwardindex].type === "white"
+      ) {
+        proceed = false;
+      }
+
+      ////////
+      if (state.spaces[currentpieceIndex + forwardindex].type === "black") {
+        ValidBoxes.push(currentpieceIndex + forwardindex);
+        original[currentpieceIndex + forwardindex] =
+          state.spaces[currentpieceIndex + forwardindex];
+        boxState.spaces[currentpieceIndex + forwardindex] =
+          blackPieces.validmove;
+        proceed = false;
+      }
+
+      ////////
+      if (state.spaces[currentpieceIndex + forwardindex].name === undefined) {
+        ValidBoxes.push(currentpieceIndex + forwardindex);
+        original[currentpieceIndex + forwardindex] =
+          state.spaces[currentpieceIndex + forwardindex];
+        boxState.spaces[currentpieceIndex + forwardindex] =
+          blackPieces.validmove;
+      }
+    }
+    /////////// left backward
+
+    proceed = true;
+    for (let forwardindex = -9; proceed === true; forwardindex -= 9) {
+      if (
+        leftedges.includes(currentpieceIndex + forwardindex) ||
+        state.spaces[currentpieceIndex + forwardindex].type === "white"
+      ) {
+        proceed = false;
+      }
+
+      ////////
+      if (state.spaces[currentpieceIndex + forwardindex].type === "black") {
+        ValidBoxes.push(currentpieceIndex + forwardindex);
+        original[currentpieceIndex + forwardindex] =
+          state.spaces[currentpieceIndex + forwardindex];
+        boxState.spaces[currentpieceIndex + forwardindex] =
+          blackPieces.validmove;
+        proceed = false;
+      }
+
+      ////////
+      if (state.spaces[currentpieceIndex + forwardindex].name === undefined) {
+        ValidBoxes.push(currentpieceIndex + forwardindex);
+        original[currentpieceIndex + forwardindex] =
+          state.spaces[currentpieceIndex + forwardindex];
+        boxState.spaces[currentpieceIndex + forwardindex] =
+          blackPieces.validmove;
+      }
+    }
+  }
+};
+
 const reducer = (state = boxState, action) => {
   if (action.type === "showValid") {
     const currentpieceIndex = action.boxIndex;
@@ -696,7 +1097,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whitepawn1":
-        blackPawnsMovements(
+        whitePawnsMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -705,7 +1106,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whitepawn2":
-        blackPawnsMovements(
+        whitePawnsMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -713,7 +1114,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whitepawn3":
-        blackPawnsMovements(
+        whitePawnsMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -721,7 +1122,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whitepawn4":
-        blackPawnsMovements(
+        whitePawnsMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -729,7 +1130,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whitepawn5":
-        blackPawnsMovements(
+        whitePawnsMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -737,7 +1138,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whitepawn6":
-        blackPawnsMovements(
+        whitePawnsMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -745,7 +1146,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whitepawn7":
-        blackPawnsMovements(
+        whitePawnsMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -753,7 +1154,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whitepawn8":
-        blackPawnsMovements(
+        whitePawnsMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -777,7 +1178,8 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whiterook1":
-        blackRooksMovements(
+        
+      whitekRooksMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
@@ -785,7 +1187,7 @@ const reducer = (state = boxState, action) => {
         break;
 
       case "whiterook2":
-        blackRooksMovements(
+        whitekRooksMovements(
           action.boxIndex,
           state.spaces[action.boxIndex].name
         );
