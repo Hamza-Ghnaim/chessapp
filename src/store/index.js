@@ -107,8 +107,8 @@ let boxState = {
     11: blackPieces.pawn4,
     // 11:whitePieces.pawn2,
     12: blackPieces.pawn5,
-    // 13: blackPieces.pawn6,
-    13:'',
+    13: blackPieces.pawn6,
+    // 13:'',
     14: blackPieces.pawn7,
     15: blackPieces.pawn8,
     16: "",
@@ -118,8 +118,8 @@ let boxState = {
     19: "",
     20: "",
     // 20:whitePieces.pawn2,
-    // 21: "",
-    21:whitePieces.pawn8,
+    21: "",
+    // 21:whitePieces.pawn8,
     22: "",
     23: "",
     24: "",
@@ -140,14 +140,14 @@ let boxState = {
     39: "",
     40: "",
     41: "",
-    // 42: "",
-    42:blackPieces.pawn5,
+    42: "",
+    // 42:blackPieces.pawn5,
     43: "",
     // 43:whitePieces.pawn2,
     44: "",
     45: "",
-    // 46: "",
-    46:blackPieces.pawn5,
+    46: "",
+    // 46:blackPieces.pawn5,
     47: "",
     48: whitePieces.pawn1,
     49: whitePieces.pawn2,
@@ -183,7 +183,7 @@ const blackPawnsMovements = (
   state = boxState,
   action
 ) => {
-  if (state.spaces[currentpieceIndex + 9].name==='whiteking') {
+    if (state.spaces[currentpieceIndex + 9].name==='whiteking') {
     checkmate();
   }
   if (state.spaces[currentpieceIndex + 7].name==='whiteking') {
@@ -338,6 +338,7 @@ const blackRooksMovements = (
   action
 ) => {
   ////////////////////// 111111
+
 
 
   if (topedges.includes(currentpieceIndex)) {
@@ -1006,6 +1007,10 @@ const whitekRooksMovements = (
           blackPieces.validmove;
       }
     }
+  }
+  if (state.spaces[4].name==='validmove') {
+    checkmate();
+    
   }
 };
 
