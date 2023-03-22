@@ -165,7 +165,7 @@ let boxState = {
     62: whitePieces.knight2,
     63: whitePieces.bishop2,
   },
-  playerTurn: "white",
+  whiteTurn: true,
   activeCell: "",
   currentPiece: "",
 };
@@ -990,232 +990,250 @@ const reducer = (state = boxState, action) => {
     console.log(ValidBoxes);
     console.log(original);
 
-    switch (currentpieceName) {
-      case "blackpawn1":
-        blackPawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-
-        console.log(currentpieceName);
-        break;
-
-      case "blackpawn2":
-        blackPawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackpawn3":
-        blackPawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackpawn4":
-        blackPawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackpawn5":
-        blackPawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackpawn6":
-        blackPawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackpawn7":
-        blackPawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackpawn8":
-        blackPawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackbishop1":
-        console.log(currentpieceName);
-        break;
-
-      case "blackbishop2":
-        console.log(currentpieceName);
-        break;
-
-      case "blackknight1":
-        console.log(currentpieceName);
-        break;
-
-      case "blackknight2":
-        console.log(currentpieceName);
-        break;
-
-      case "blackrook1":
-        blackRooksMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackrook2":
-        blackRooksMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "blackqueen":
-        console.log(currentpieceName);
-        break;
-
-      case "blackking":
-        console.log(currentpieceName);
-        break;
-
-      case "whitepawn1":
-        whitePawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-
-        console.log(currentpieceName);
-        break;
-
-      case "whitepawn2":
-        whitePawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whitepawn3":
-        whitePawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whitepawn4":
-        whitePawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whitepawn5":
-        whitePawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whitepawn6":
-        whitePawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whitepawn7":
-        whitePawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whitepawn8":
-        whitePawnsMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whitebishop1":
-        console.log(currentpieceName);
-        break;
-
-      case "whitebishop2":
-        console.log(currentpieceName);
-        break;
-
-      case "whiteknight1":
-        console.log(currentpieceName);
-        break;
-
-      case "whiteknight2":
-        console.log(currentpieceName);
-        break;
-
-      case "whiterook1":
-        
-      whitekRooksMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whiterook2":
-        whitekRooksMovements(
-          action.boxIndex,
-          state.spaces[action.boxIndex].name
-        );
-        console.log(currentpieceName);
-        break;
-
-      case "whitequeen":
-        console.log(currentpieceName);
-        break;
-
-      case "whiteking":
-        console.log(currentpieceName);
-        break;
-
-      default:
-        break;
+    if (state.whiteTurn!==true) {
+      switch (currentpieceName) {
+        case "blackpawn1":
+          blackPawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+  
+          console.log(currentpieceName);
+          break;
+  
+        case "blackpawn2":
+          blackPawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackpawn3":
+          blackPawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackpawn4":
+          blackPawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackpawn5":
+          blackPawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackpawn6":
+          blackPawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackpawn7":
+          blackPawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackpawn8":
+          blackPawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackbishop1":
+          console.log(currentpieceName);
+          break;
+  
+        case "blackbishop2":
+          console.log(currentpieceName);
+          break;
+  
+        case "blackknight1":
+          console.log(currentpieceName);
+          break;
+  
+        case "blackknight2":
+          console.log(currentpieceName);
+          break;
+  
+        case "blackrook1":
+          blackRooksMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackrook2":
+          blackRooksMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "blackqueen":
+          console.log(currentpieceName);
+          break;
+  
+        case "blackking":
+          console.log(currentpieceName);
+          break;
+  
+          default:
+            break;
+        }
+    
+        return {
+          spaces: state.spaces,
+          currentPiece: state.currentPiece,
+          whiteTurn: state.whiteTurn,
+          activeCell: (state.activeCell = action.boxIndex),
+        };
     }
 
-    return {
-      spaces: state.spaces,
-      currentPiece: state.currentPiece,
-      playerTurn: state.playerTurn,
-      activeCell: (state.activeCell = action.boxIndex),
-    };
-  }
+    
+    if (state.whiteTurn) {
+      switch (currentpieceName) {
+        case "whitepawn1":
+          whitePawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+  
+          console.log(currentpieceName);
+          break;
+  
+        case "whitepawn2":
+          whitePawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whitepawn3":
+          whitePawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whitepawn4":
+          whitePawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whitepawn5":
+          whitePawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whitepawn6":
+          whitePawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whitepawn7":
+          whitePawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whitepawn8":
+          whitePawnsMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whitebishop1":
+          console.log(currentpieceName);
+          break;
+  
+        case "whitebishop2":
+          console.log(currentpieceName);
+          break;
+  
+        case "whiteknight1":
+          console.log(currentpieceName);
+          break;
+  
+        case "whiteknight2":
+          console.log(currentpieceName);
+          break;
+  
+        case "whiterook1":
+          
+        whitekRooksMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whiterook2":
+          whitekRooksMovements(
+            action.boxIndex,
+            state.spaces[action.boxIndex].name
+          );
+          console.log(currentpieceName);
+          break;
+  
+        case "whitequeen":
+          console.log(currentpieceName);
+          break;
+  
+        case "whiteking":
+          console.log(currentpieceName);
+          break;
+  
+        default:
+          break;
+      }
+  
+      return {
+        spaces: state.spaces,
+        currentPiece: state.currentPiece,
+        whiteTurn: state.whiteTurn,
+        activeCell: (state.activeCell = action.boxIndex),
+      };
+    }
+    }
+
+
 
   if (action.type === "movePiece") {
-    // console.log();
     state.spaces[action.position] = state.spaces[state.activeCell];
     state.spaces[state.activeCell] = "";
     ValidBoxes.forEach((idx) => {
@@ -1223,22 +1241,16 @@ const reducer = (state = boxState, action) => {
         state.spaces[idx] = original[idx];
       }
     });
-    // ValidBoxes.forEach(idx => {
-    //   if (idx!==action.position) {
-    //     console.log(state.spaces[idx],original.idx);
-    //     state.spaces[idx] = original.idx
-    //   }
-    //   })
-
     ValidBoxes = [];
   }
   return {
     spaces: state.spaces,
     currentPiece: state.currentPiece,
-    playerTurn: state.playerTurn,
+    whiteTurn: !state.whiteTurn,
     activeCell: (state.activeCell = action.boxIndex),
   };
 };
+
 
 const store = legacy_createStore(reducer);
 
