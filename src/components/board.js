@@ -72,9 +72,11 @@ const Board = () => {
         ))}
       </div>
       {/* <hr/> */}
-      <ul>
+      <div style={{overflowY: "scroll"}}>
+      <ul className={styles.unorderedList}>
       { History && History.map((reading)=>(<li key = {reading}>{reading}</li>))}
       </ul>
+      </div>
     </div>
   );
 };
