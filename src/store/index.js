@@ -140,12 +140,14 @@ let boxState = {
     39: "",
     40: "",
     41: "",
-    42: "",
+    // 42: "",
+    42:blackPieces.pawn5,
     43: "",
     // 43:whitePieces.pawn2,
     44: "",
     45: "",
-    46: "",
+    // 46: "",
+    46:blackPieces.pawn5,
     47: "",
     48: whitePieces.pawn1,
     49: whitePieces.pawn2,
@@ -181,6 +183,12 @@ const blackPawnsMovements = (
   state = boxState,
   action
 ) => {
+  if (state.spaces[currentpieceIndex + 9].name==='whiteking') {
+    checkmate();
+  }
+  if (state.spaces[currentpieceIndex + 7].name==='whiteking') {
+    checkmate();
+  }
   if (leftedges.includes(currentpieceIndex)) {
     if (state.spaces[currentpieceIndex + 8].name === undefined) {
       ValidBoxes.push(currentpieceIndex + 8);
@@ -330,6 +338,7 @@ const blackRooksMovements = (
   action
 ) => {
   ////////////////////// 111111
+
 
   if (topedges.includes(currentpieceIndex)) {
     let proceed = true;
@@ -667,7 +676,14 @@ const whitekRooksMovements = (
   ////////////////////// 111111
 
   if (topedges.includes(currentpieceIndex)) {
+
     let proceed = true;
+    for (let index = 9; proceed === true; index += 9){
+      if (state.spaces[currentpieceIndex-index].name ==="blackking") {
+        // proceed = false;
+        checkmate();
+      }
+    }
     for (let index = 9; proceed === true; index += 9) {
       if (
         rightedges.includes(currentpieceIndex + index) ||
