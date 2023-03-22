@@ -666,6 +666,10 @@ const blackRooksMovements = (
       }
     }
   }
+  if (state.spaces[60].name==='validmove') {
+    checkmate();
+    
+  }
 };
 
 const whitekRooksMovements = (
